@@ -1,6 +1,12 @@
-
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-inter",
+});
 
 export const metadata = {
   title: "Naym Hossen - Full Stack Developer Portfolio",
@@ -32,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>
+      <body className={`antialiased ${inter.variable} font-inter`}>
         {children}
         <Toaster position="top-right" reverseOrder={false} />
       </body>

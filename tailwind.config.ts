@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        inter: "var(--font-inter)", // Use in Tailwind classes
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
