@@ -85,7 +85,7 @@ const NavMenus = () => {
       </div>
 
       {/* contact us section with social icon */}
-      <section className=" mt-24 flex items-center justify-between">
+      <section className="mt-24 flex items-center justify-between">
         <div className="flex items-center space-x-6">
           <a
             className="hover:-mt-10 transition-all duration-300"
