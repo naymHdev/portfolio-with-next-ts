@@ -12,19 +12,25 @@ const DashboardLayout: React.FC<IDashboardLayoutProps> = ({ children }) => {
       <input id="dashboard-drawer" type="checkbox" className="hidden peer" />
 
       {/* Sidebar */}
-      <div className="fixed inset-y-0 left-0 z-50 w-72 custom-bg bg-background text-white shadow-lg peer-checked:translate-x-0 -translate-x-full transition-transform duration-300 lg:translate-x-0 lg:relative">
+      <div className="fixed inset-y-0 left-0 z-50 w-72 custom-bg bg-background text-white shadow-lg peer-checked:translate-x-0 -translate-x-full transition-transform duration-300 lg:translate-x-0 lg:relative ">
         <label
           htmlFor="dashboard-drawer"
           className="absolute top-4 right-4 lg:hidden text-white cursor-pointer"
         >
           ✖
         </label>
-        <ul className="p-6 space-y-4">
+        <ul className="p-6 space-y-4 mt-10">
           <li>
             <Link href="/dashboard">Dashboard</Link>
           </li>
           <li>
             <Link href="/dashboard/blogs">Blog Management</Link>
+          </li>
+          <li>
+            <Link href="/dashboard/projects">Project Management</Link>
+          </li>
+          <li>
+            <Link href="/dashboard/messages">Messages Management</Link>
           </li>
         </ul>
       </div>

@@ -29,7 +29,7 @@ const BlogsPage = async () => {
         </div>
         <div className=" mt-10">
           {/* <h2 className=" text-2xl font-black text-title">Blogs</h2> */}
-          <div>
+          <div className="overflow-auto overflow-y-scroll h-screen overflow-x-hidden no-scrollbar">
             {blogs?.map((blog: TBlog) => (
               <DashboardBlogCard key={blog._id} blog={blog} />
             ))}
