@@ -9,7 +9,7 @@ import { toast } from "react-hot-toast";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
-import { useRouter } from "next/navigation";
+import clsx from "clsx";
 
 const blogSchema = z.object({
   title: z.string().min(5, "Title must be at least 5 characters"),
@@ -21,7 +21,6 @@ const blogSchema = z.object({
 type BlogFormData = z.infer<typeof blogSchema>;
 
 const BlogForm = () => {
-  const router = useRouter();
   const [markdownPreview, setMarkdownPreview] = useState<string>("");
 
   const {
@@ -33,35 +32,35 @@ const BlogForm = () => {
   });
 
   const onSubmit = async (data: BlogFormData) => {
+    // console.log("data", data);
     try {
-      const response = await fetch("/api/blogs", {
+      const response = await fetch("http://localhost:3000/api/blog", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.message);
+      // console.log("response", response);
+
+      // Parse the JSON response only if it's a successful response
+      await response.json();
 
       toast.success("Blog created successfully!");
-      router.push("/blogs"); // Redirect to blogs page
     } catch (error: any) {
+      console.log("catch", error);
       toast.error(error.message || "Failed to create blog");
     }
   };
 
   return (
-    <div className=" mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Create New Blog</h2>
-
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <div className="">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {/* Title */}
         <div>
-          <label className="block text-sm font-medium">Title</label>
           <input
             type="text"
             {...register("title")}
-            className="w-full border p-2 rounded"
+            className="w-full bg-background custom-bg focus:outline-none py-6 px-4 text-4xl font-semibold"
             placeholder="Enter blog title"
           />
           {errors.title && (
@@ -69,13 +68,38 @@ const BlogForm = () => {
           )}
         </div>
 
+        {/* Content (Markdown Editor) */}
+        <div>
+          <textarea
+            {...register("content")}
+            className="w-full bg-background custom-bg focus:outline-none py-3 px-4 font-medium h-40"
+            placeholder="Write your blog in Markdown..."
+            onChange={(e) => setMarkdownPreview(e.target.value)}
+          ></textarea>
+          {errors.content && (
+            <p className="text-red-500 text-sm">{errors.content.message}</p>
+          )}
+          {/* Markdown Preview */}
+          <div className={clsx({ hidden: markdownPreview.length === 0 })}>
+            <h3 className=" font-medium text-title my-2">Blog Preview</h3>
+            <div className=" bg-white custom-bg px-4 py-2">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeHighlight]}
+                className="prose max-w-none"
+              >
+                {markdownPreview}
+              </ReactMarkdown>
+            </div>
+          </div>
+        </div>
+
         {/* Category */}
         <div>
-          <label className="block text-sm font-medium">Category</label>
           <input
             type="text"
             {...register("category")}
-            className="w-full border p-2 rounded"
+            className="w-full bg-background custom-bg focus:outline-none p-2"
             placeholder="Enter category"
           />
           {errors.category && (
@@ -85,11 +109,10 @@ const BlogForm = () => {
 
         {/* Image URL */}
         <div>
-          <label className="block text-sm font-medium">Image URL</label>
           <input
             type="text"
             {...register("image")}
-            className="w-full border p-2 rounded"
+            className="w-full p-2 bg-background custom-bg focus:outline-none"
             placeholder="Enter image URL"
           />
           {errors.image && (
@@ -97,45 +120,15 @@ const BlogForm = () => {
           )}
         </div>
 
-        {/* Content (Markdown Editor) */}
-        <div>
-          <label className="block text-sm font-medium">
-            Content (Markdown)
-          </label>
-          <textarea
-            {...register("content")}
-            className="w-full border p-2 rounded h-40"
-            placeholder="Write your blog in Markdown..."
-            onChange={(e) => setMarkdownPreview(e.target.value)}
-          ></textarea>
-          {errors.content && (
-            <p className="text-red-500 text-sm">{errors.content.message}</p>
-          )}
-        </div>
-
         {/* Submit Button */}
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:bg-gray-400"
+          className="bg-background custom-bg focus:outline-none px-6 py-3"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Submitting..." : "Create Blog"}
         </button>
       </form>
-
-      {/* Markdown Preview */}
-      <div className="mt-8">
-        <h3 className="text-xl font-bold">Markdown Preview</h3>
-        <div className="border p-4 rounded bg-gray-50">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]} // For GitHub-flavored Markdown support (tables, task lists, etc.)
-            rehypePlugins={[rehypeHighlight]} // For syntax highlighting
-            className="prose max-w-none"
-          >
-            {markdownPreview}
-          </ReactMarkdown>
-        </div>
-      </div>
     </div>
   );
 };

@@ -30,7 +30,7 @@ const DashboardLayout: React.FC<IDashboardLayoutProps> = ({ children }) => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 min-h-screen p-6 custom-bg bg-background transition-all duration-300">
+      <div className="flex-1 min-h-screen p-6 bg-background transition-all duration-300">
         {/* Mobile Menu Button */}
         <label
           htmlFor="dashboard-drawer"

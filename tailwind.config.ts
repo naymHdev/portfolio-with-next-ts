@@ -9,11 +9,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        inter: "var(--font-inter)", // Use custom Inter font
+        inter: "var(--font-inter)",
       },
       colors: {
-        background: "var(--background)", // Custom background color
-        foreground: "var(--foreground)", // Custom foreground color
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        title: "var(--title)",
+        card: "var(--card)",
+        primaryColor: "var(--primaryColor)",
       },
     },
   },
