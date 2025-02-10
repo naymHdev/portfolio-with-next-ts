@@ -1,23 +1,21 @@
+import DashboardBlogCard from "@/components/ui/DashboardBlogCard";
+import { TBlog } from "@/lib/models/blogModel";
 import Link from "next/link";
 
 const BlogsPage = async () => {
+  const res = await fetch("http://localhost:3000/api/blog", {
+    cache: "no-store",
+  });
 
-  // const res = await fetch("http://localhost:3000/api/blogs", {
-  //   cache: "no-store",
-  // });
+  const blogs = await res.json();
 
-  // if (!res.ok) {
-  //   console.error("Failed to fetch blogs:", res.statusText);
-  //   return;
-  // }
-
-  // const blogs = await res.json();
-
-  // if (blogs.length === 0) {
-  //   console.log("No blogs found.");
-  // } else {
-  //   console.log("blogs--------", blogs);
-  // }
+  if (blogs.length === 0) {
+    return (
+      <p className="text-sm font-medium text-secondary text-center mt-20">
+        No blogs <span className="mx-1">•</span> found.
+      </p>
+    );
+  }
 
   return (
     <>
@@ -30,8 +28,12 @@ const BlogsPage = async () => {
           </Link>
         </div>
         <div className=" mt-10">
-          <h2 className=" text-2xl font-black text-title">Blogs</h2>
-          <div></div>
+          {/* <h2 className=" text-2xl font-black text-title">Blogs</h2> */}
+          <div>
+            {blogs?.map((blog: TBlog) => (
+              <DashboardBlogCard key={blog._id} blog={blog} />
+            ))}
+          </div>
         </div>
       </section>
     </>

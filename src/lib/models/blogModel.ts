@@ -1,6 +1,15 @@
 import mongoose from "mongoose";
 
-const BlogSchema = new mongoose.Schema({
+export type TBlog = {
+  _id?: string;
+  title: string;
+  content: string;
+  category: string;
+  image: string;
+  date: Date;
+};
+
+const BlogSchema = new mongoose.Schema<TBlog>({
   title: {
     type: String,
     required: true,
