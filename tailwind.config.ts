@@ -9,13 +9,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        inter: "var(--font-inter)", // Use in Tailwind classes
+        inter: "var(--font-inter)", // Use custom Inter font
       },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "var(--background)", // Custom background color
+        foreground: "var(--foreground)", // Custom foreground color
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui"), // DaisyUI for component styling
+    require("@tailwindcss/typography"), // For markdown content styling
+  ],
 } satisfies Config;

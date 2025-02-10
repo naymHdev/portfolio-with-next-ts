@@ -1,7 +1,11 @@
+import BlogForm from "@/components/BlogForm";
+
 const CreateBlog = () => {
   return (
     <>
-      <div>Creat blog</div>
+      <div>
+        <BlogForm />
+      </div>
     </>
   );
 };
