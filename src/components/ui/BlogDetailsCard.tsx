@@ -1,6 +1,7 @@
 import { TBlog } from "@/lib/models/blogModel";
 import moment from "moment";
 import Image from "next/image";
+import NHReactMarkdown from "./ReactMarkdown";
 
 const BlogDetailsCard = ({ details }: { details: TBlog }) => {
   const { title, content, image, date } = details || {};
@@ -23,7 +24,7 @@ const BlogDetailsCard = ({ details }: { details: TBlog }) => {
           </div>
         </div>
         <div className=" py-10">
-          <p className="text-title text-lg">{content?.slice(0, 500)}</p>
+          <NHReactMarkdown content={content?.slice(0, 500)} />
         </div>
         <div className="relative w-full h-64 sm:h-96 md:h-[500px] lg:h-[600px]">
           {image && (
@@ -36,7 +37,7 @@ const BlogDetailsCard = ({ details }: { details: TBlog }) => {
           )}
         </div>
         <div className=" py-10">
-          <p className="text-title text-lg">{content?.slice(501)}</p>
+          <NHReactMarkdown content={content?.slice(501)} />
         </div>
       </div>
     </>

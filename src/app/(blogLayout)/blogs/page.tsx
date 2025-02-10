@@ -1,4 +1,5 @@
 import Container from "@/components/ui/Container";
+import NHReactMarkdown from "@/components/ui/ReactMarkdown";
 import { TBlog } from "@/lib/models/blogModel";
 import { fetchData } from "@/utils/fetchData";
 import moment from "moment";
@@ -13,10 +14,10 @@ const BlogsPage = async () => {
       <section>
         <Container>
           <div className=" w-[90%] lg:w-[70%] mx-auto">
-            {blogs?.map((blog) => (
+            {blogs?.reverse().map((blog) => (
               <div
                 key={blog._id}
-                className="p-4 flex flex-col md:flex-row justify-between border-b border-[#013f5b] gap-4"
+                className="py-8 flex flex-col items-center md:flex-row justify-between border-b border-[#013f5b] gap-4"
               >
                 <div className="flex-1">
                   <Link href={`/blogs/${blog._id}`}>
@@ -28,7 +29,10 @@ const BlogsPage = async () => {
                     {moment(blog.date).format("MMMM D, YYYY")}
                   </p>
 
-                  <div className="mt-3 text-foreground">{blog.content}</div>
+                  <div className="mt-3 text-foreground">
+                    <NHReactMarkdown content={blog.content?.slice(0, 200)} />
+                    <span>{blog.content.length > 200 && "..."}</span>
+                  </div>
                 </div>
                 <div className="mt-4 md:mt-0">
                   <Image
