@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
+import { JSX } from "react";
 
 export type TBlog = {
+  map(arg0: (blog: TBlog) => JSX.Element): import("react").ReactNode;
+  length: number;
   _id?: string;
   title: string;
   content: string;

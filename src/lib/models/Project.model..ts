@@ -1,6 +1,9 @@
 import mongoose, { Schema } from "mongoose";
+import { JSX } from "react";
 
 export type TProject = {
+  map(arg0: (project: TProject) => JSX.Element): import("react").ReactNode;
+  length?: number | undefined;
   _id?: string;
   projectName: string;
   details: string;

@@ -37,7 +37,7 @@ const ProjectForm = () => {
   } = useForm<ProjectFormData>({ resolver: zodResolver(projectSchema) });
 
   const onSubmit = async (data: ProjectFormData) => {
-    console.log("Project created:", data);
+    // console.log("Project created:", data);
     try {
       const response = (await fetchData<ProjectResponse>("/api/project", {
         method: "POST",
@@ -46,7 +46,7 @@ const ProjectForm = () => {
 
       if (!response) throw new Error("Invalid response from server");
 
-      console.log("Project created:", response);
+      // console.log("Project created:", response);
 
       reset();
       toast.success("Project created successfully!");
