@@ -12,6 +12,8 @@ const ProjectDetailsPage = async ({
 
   const project: TProject | null = await fetchData(`/api/project/${id}`);
 
+  // console.log('project', project);
+
   return (
     <>
       <section>

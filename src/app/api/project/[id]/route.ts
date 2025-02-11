@@ -1,5 +1,5 @@
 import { connectDB } from "@/lib/config/dbConnect";
-import BlogModel from "@/lib/models/blogModel";
+import ProjectModel from "@/lib/models/Project.model.";
 import { NextResponse } from "next/server";
 
 export const GET = async (
@@ -10,7 +10,7 @@ export const GET = async (
     await connectDB();
     const id = (await params).id;
 
-    const project = await BlogModel.findById(id);
+    const project = await ProjectModel.findById(id);
 
     return NextResponse.json(project);
   } catch (error) {
