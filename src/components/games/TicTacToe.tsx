@@ -2,8 +2,8 @@
 import { useState, useEffect } from "react";
 
 const TicTacToe = () => {
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const [isXNext, setIsXNext] = useState(true); // X starts
+  const [board, setBoard] = useState<(string | null)[]>(Array(9).fill(null));
+  const [isXNext, setIsXNext] = useState(true);
 
   useEffect(() => {
     if (!isXNext && !calculateWinner(board)) {
@@ -14,9 +14,9 @@ const TicTacToe = () => {
     }
   }, [isXNext, board]);
 
-  const handleClick = (index) => {
+  const handleClick = (index: number) => {
     if (board[index] || calculateWinner(board)) return;
-    const boardCopy = board.slice();
+    const boardCopy = [...board];
     boardCopy[index] = "X"; // Player is always X
     setBoard(boardCopy);
     setIsXNext(false);
@@ -25,11 +25,12 @@ const TicTacToe = () => {
   const handleAutoPlay = () => {
     const emptyIndices = board
       .map((value, index) => (value === null ? index : null))
-      .filter((index) => index !== null);
+      .filter((index): index is number => index !== null);
+
     if (emptyIndices.length === 0) return; // No moves if board is full
     const randomIndex =
       emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
-    const boardCopy = board.slice();
+    const boardCopy = [...board];
     boardCopy[randomIndex] = "O"; // Auto player is always O
     setBoard(boardCopy);
     setIsXNext(true);
@@ -62,7 +63,7 @@ const TicTacToe = () => {
             key={index}
             className="w-20 h-20 border-none focus:outline-none bg-card custom-bg text-4xl flex items-center justify-center cursor-pointer text-title"
             onClick={() => handleClick(index)}
-            disabled={board[index] || winner}
+            disabled={!!board[index] || !!winner}
           >
             {value}
           </button>
@@ -87,7 +88,7 @@ const TicTacToe = () => {
   );
 };
 
-const calculateWinner = (squares) => {
+const calculateWinner = (squares: (string | null)[]): string | null => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],

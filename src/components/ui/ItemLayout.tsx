@@ -1,9 +1,13 @@
-/* eslint-disable react/prop-types */
-
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import { ReactNode } from "react";
 
-const ItemLayout = ({ children, className }) => {
+interface ItemLayoutProps {
+  children: ReactNode;
+  className?: string;
+}
+
+const ItemLayout: React.FC<ItemLayoutProps> = ({ children, className }) => {
   return (
     <motion.div
       initial={{ scale: 0 }}
