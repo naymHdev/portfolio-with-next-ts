@@ -5,12 +5,12 @@ import { fetchData } from "@/utils/fetchData";
 import moment from "moment";
 import Image from "next/image";
 
-// type TParams = Promise<{ id: string }>;
-
 const BlogDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const { id } = await params;
+  const id = (await params).id;
 
   const blog: TBlog | null = await fetchData(`/api/blog/${id}`);
+
+  // console.log('blog', blog);
 
   return (
     <div className=" pt-10">

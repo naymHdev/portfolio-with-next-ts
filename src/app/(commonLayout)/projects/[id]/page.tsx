@@ -8,7 +8,7 @@ const ProjectDetailsPage = async ({
 }: {
   params: Promise<{ id: string }>;
 }) => {
-  const { id } = await params;
+  const id = (await params).id;
 
   const project: TProject | null = await fetchData(`/api/project/${id}`);
 

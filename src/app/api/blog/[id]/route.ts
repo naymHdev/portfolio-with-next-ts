@@ -3,12 +3,12 @@ import BlogModel from "@/lib/models/blogModel";
 import { NextResponse } from "next/server";
 
 export const GET = async (
-  _req: Request,
-  context: { params: { id: string } }
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
     await connectDB();
-    const { id } = await context.params;
+    const id = (await params).id;
 
     const blogs = await BlogModel.findById(id);
 
