@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Naym Hossen - Full Stack Developer Portfolio",
+  name: "Naym Hossen - Full Stack Developer Portfolio",
   description:
     "Explore the portfolio of Naym Hossen, a skilled Full Stack Developer specializing in MERN stack development. View projects, skills, and case studies.",
 };
