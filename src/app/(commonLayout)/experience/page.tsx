@@ -1,7 +1,7 @@
 import ExperienceCard from "./experienceCard";
 import RouteTitle from "../../../components/ui/RouteTitle";
 
-export const experience = [
+const experience = [
   {
     companyName: "Logistic Business Solutions Ltd.",
     jobTitle: "Full Stack Developer",
