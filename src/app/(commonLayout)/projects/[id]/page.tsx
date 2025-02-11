@@ -3,7 +3,11 @@ import { TProject } from "@/lib/models/Project.model.";
 import { fetchData } from "@/utils/fetchData";
 import Image from "next/image";
 
-const ProjectDetailsPage = async ({ params }: { params: { id: string } }) => {
+interface ProjectDetailsProps {
+  params: { id: string };
+}
+
+const ProjectDetailsPage = async ({ params }: ProjectDetailsProps) => {
   const { id } = params;
 
   const projects: TProject[] | null = await fetchData("/api/project");

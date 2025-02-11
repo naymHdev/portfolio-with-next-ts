@@ -13,7 +13,13 @@ const BlogDetailsCard = ({ details }: { details: TBlog }) => {
         <div className=" flex items-center gap-5 mt-6">
           <div className="avatar">
             <div className="w-12 rounded-full">
-              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+              <Image
+                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                alt={title}
+                width={12}
+                height={12}
+                className="rounded-full"
+              />
             </div>
           </div>
           <div className=" space-y-2">
