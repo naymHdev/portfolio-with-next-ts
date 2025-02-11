@@ -10,7 +10,7 @@ export const BlogDetails = async ({ params }: { params: { id: string } }) => {
 
   const blogDetails = blogs?.filter((itm) => itm._id === id);
 
-  console.log("blogDetails", blogDetails);
+  // console.log("blogDetails", blogDetails);
 
   return (
     <div className=" pt-10">

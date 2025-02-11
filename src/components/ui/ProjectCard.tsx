@@ -20,7 +20,7 @@ const ProjectCard = ({ project }: { project: TProject }) => {
           <h2 className=" text-2xl font-semibold text-title">
             {project?.projectName}
           </h2>
-          <NHReactMarkdown content={project?.details?.slice(0, 300)} />
+          <NHReactMarkdown content={project?.details?.slice(0, 100)} />
         </div>
         <div className="flex items-center gap-4 mt-4">
           <button className="custom-bg hover:scale-105 transition-transform px-5 py-2 text-title">
