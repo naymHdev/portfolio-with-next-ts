@@ -1,8 +1,12 @@
+import ProjectForm from "@/components/ProjectForm";
+
 const CreateProject = () => {
   return (
     <>
       <section>
-        <div></div>
+        <div>
+          <ProjectForm />
+        </div>
       </section>
     </>
   );
