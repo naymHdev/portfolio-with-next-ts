@@ -34,7 +34,7 @@ const BlogForm = () => {
   const onSubmit = async (data: BlogFormData) => {
     // console.log("data", data);
     try {
-      const response = await fetch("http://localhost:3000/api/blog", {
+      const response = await fetch("https://naym-hossen.vercel.app/api/blog", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
