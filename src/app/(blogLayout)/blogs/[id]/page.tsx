@@ -4,7 +4,7 @@ import { TBlog } from "@/lib/models/blogModel";
 import { fetchData } from "@/utils/fetchData";
 
 export const BlogDetails = async ({ params }: { params: { id: string } }) => {
-  const { id } = await params;
+  const { id } = params;
 
   const blogs: TBlog[] | null = await fetchData("/api/blog");
 

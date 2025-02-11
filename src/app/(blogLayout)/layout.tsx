@@ -5,7 +5,7 @@ interface BlogLayoutProps {
 const BlogLayout: React.FC<BlogLayoutProps> = ({ children }) => {
   return (
     <>
-      <div className=" min-h-screen">{children}</div>
+      <div className=" min-h-screen flex">{children}</div>
     </>
   );
 };

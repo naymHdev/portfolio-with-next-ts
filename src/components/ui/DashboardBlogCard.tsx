@@ -1,6 +1,7 @@
 import Image from "next/image";
 import moment from "moment";
 import { TBlog } from "@/lib/models/blogModel";
+import NHReactMarkdown from "./ReactMarkdown";
 
 const DashboardBlogCard = ({ blog }: { blog: TBlog }) => {
   const { title, content, image, date, _id } = blog || {};
@@ -18,7 +19,9 @@ const DashboardBlogCard = ({ blog }: { blog: TBlog }) => {
                 {moment(date).format("MMMM D, YYYY")}
               </p>
             </a>
-            <div className="mt-2 text-foreground">{content}</div>
+            <div className="mt-2 text-foreground">
+              <NHReactMarkdown content={content?.slice(0, 500)} />
+            </div>
             <div className=" flex items-center gap-4 mt-4">
               <button className="custom-bg hover:scale-105 transition-transform px-5 py-2 text-title">
                 Update
