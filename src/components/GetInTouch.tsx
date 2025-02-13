@@ -5,12 +5,54 @@ import { MdOutlineClose } from "react-icons/md";
 import { BsMailbox, BsPhone, BsGeoAlt } from "react-icons/bs";
 import { FaPenFancy } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
+import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
+import { fetchData } from "@/utils/fetchData";
+import toast from "react-hot-toast";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+export const MessageSchema = z.object({
+  name: z.string(),
+  email: z.string(),
+  message: z.string().min(10, "Details must be at least 10 characters"),
+});
+
+type MessageFormData = z.infer<typeof MessageSchema>;
+
+interface MessageResponse {
+  message: string;
+  data: MessageFormData;
+}
 
 const GetInTouch = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const { register, handleSubmit, reset } = useForm<MessageFormData>({
+    resolver: zodResolver(MessageSchema),
+  });
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    // console.log(data);
+
+    try {
+      const response = (await fetchData<MessageResponse>("/api/message", {
+        method: "POST",
+        body: JSON.stringify(data),
+      })) as { message: string; data: MessageFormData };
+
+      if (!response) throw new Error("Invalid response from server");
+
+      // console.log("Project created:", response);
+
+      reset();
+      toast.success("Thank you for query me!");
+    } catch {
+      // console.error("Message sending failed", error);
+      toast.error("Sorry try agin place!");
+    }
+  };
 
   return (
     <>
@@ -64,22 +106,24 @@ const GetInTouch = () => {
             </div>
 
             {/* Form starts here */}
-            <form className="mt-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
               <div className="form-control">
                 <input
                   type="text"
                   placeholder="Your Name"
                   className="w-full bg-inherit focus:outline-none border-title border-b p-2 text-foreground"
                   required
+                  {...register("name")}
                 />
               </div>
 
               <div className="form-control mt-6">
                 <input
-                  type="email"
+                  type="text"
                   placeholder="Your Email"
                   className="w-full bg-inherit focus:outline-none border-title border-b p-2 text-foreground"
                   required
+                  {...register("email")}
                 />
               </div>
 
@@ -88,6 +132,7 @@ const GetInTouch = () => {
                   placeholder="Your Message"
                   className="w-full bg-inherit focus:outline-none border-title border-b p-2 text-foreground"
                   required
+                  {...register("message")}
                 ></textarea>
               </div>
 
