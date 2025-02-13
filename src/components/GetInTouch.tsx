@@ -12,9 +12,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 export const MessageSchema = z.object({
-  name: z.string(),
-  email: z.string(),
-  message: z.string().min(10, "Details must be at least 10 characters"),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email format"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+  sendTime: z.date().optional(),
 });
 
 type MessageFormData = z.infer<typeof MessageSchema>;
@@ -34,23 +35,24 @@ const GetInTouch = () => {
     resolver: zodResolver(MessageSchema),
   });
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    // console.log(data);
+    const sendMessage = { ...data, sendTime: new Date() };
+    // console.log(data, "sendMessage", sendMessage);
 
     try {
-      const response = (await fetchData<MessageResponse>("/api/message", {
+      const response = await fetchData<MessageResponse>("/api/message", {
         method: "POST",
-        body: JSON.stringify(data),
-      })) as { message: string; data: MessageFormData };
+        body: JSON.stringify(sendMessage),
+      });
 
       if (!response) throw new Error("Invalid response from server");
 
       // console.log("Project created:", response);
 
       reset();
-      toast.success("Thank you for query me!");
+      toast.success("Thank you for reaching out!");
     } catch {
       // console.error("Message sending failed", error);
-      toast.error("Sorry try agin place!");
+      toast.error("Sorry, please try again!");
     }
   };
 
