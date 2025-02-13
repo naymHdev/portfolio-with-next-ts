@@ -57,3 +57,42 @@ export const DELETE = async (
     );
   }
 };
+
+export const PUT = async (
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) => {
+  await connectDB();
+
+  try {
+    const id = (await params).id;
+
+    const updatedData = await req.json();
+
+    const updatedBlog = await BlogModel.findByIdAndUpdate(id, updatedData, {
+      new: true,
+    });
+
+    if (!updatedBlog) {
+      return NextResponse.json({ message: "Blog not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Blog updated successfully",
+        project: updatedBlog,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Error updating project",
+        errors: error,
+      },
+      { status: 500 }
+    );
+  }
+};
