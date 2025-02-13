@@ -11,7 +11,7 @@ const MessagesManagement = async () => {
     <>
       <section>
         <Container>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {messages &&
               messages?.map((message) => (
                 <div className="bg-card custom-bg p-4" key={message._id}>
@@ -19,7 +19,9 @@ const MessagesManagement = async () => {
                     Sender: {message.name}
                   </h3>
                   <div className=" text-foreground font-medium space-y-2 mt-4">
-                    <p>{message?.email}</p>
+                    <p className=" hover:text-primaryColor link">
+                      {message?.email}
+                    </p>
                     <p>{message?.message}</p>
                   </div>
                 </div>
