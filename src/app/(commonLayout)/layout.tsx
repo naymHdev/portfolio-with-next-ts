@@ -1,17 +1,21 @@
 import Footer from "@/components/pages/Footer";
 import MobileNavbar from "@/components/sidebars/MobileNavbar";
 import Sidebar from "@/components/sidebars/Sidebar";
+import { authOptions } from "@/utils/authOptions";
+import { getServerSession } from "next-auth";
 
 interface CommonLayoutProps {
   children: React.ReactNode;
 }
 
-const CommonLayout: React.FC<CommonLayoutProps> = ({ children }) => {
+const CommonLayout: React.FC<CommonLayoutProps> = async ({ children }) => {
+  const session = await getServerSession(authOptions);
+
   return (
     <div className=" grid grid-cols-1 md:grid-cols-5">
       <div className="col-span-full lg:col-span-2 lg:h-screen">
         <div className="hidden md:flex py-4 sm:py-6 lg:py-8">
-          <Sidebar />
+          <Sidebar session={session} />
         </div>
         <div className="md:hidden flex ">
           <MobileNavbar />

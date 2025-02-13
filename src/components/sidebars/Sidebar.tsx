@@ -1,7 +1,8 @@
 import Link from "next/link";
 import NavMenus from "./NavMenus";
+import { UserProps } from "@/types/global.types";
 
-const Sidebar = () => {
+const Sidebar = ({ session }: { session: UserProps | null }) => {
   return (
     <>
       <section className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,7 +29,7 @@ const Sidebar = () => {
           </div>
         </div>
         <div>
-          <NavMenus />
+          <NavMenus session={session} />
         </div>
       </section>
     </>

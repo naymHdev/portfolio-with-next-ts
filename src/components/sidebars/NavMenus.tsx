@@ -1,11 +1,15 @@
 "use client";
+
 import Link from "next/link";
 import { FaFacebook, FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
 import GetInTouch from "../GetInTouch";
+import { UserProps } from "@/types/global.types";
 
-const NavMenus = () => {
+const NavMenus = ({ session }: { session: UserProps | null }) => {
   const pathname = usePathname();
+
+  // console.log("session", session?.user);
 
   return (
     <>
@@ -81,6 +85,37 @@ const NavMenus = () => {
               <div className="border-b border-b-primaryColor w-10 group-hover:w-20 transition-all duration-300" />
             </div>
           </Link>
+          {session?.user ? (
+            <Link href="/dashboard" className="hover:text-primaryColor">
+              <div className="group flex items-center gap-3">
+                <p
+                  className={`text-base ${
+                    pathname == "/dashboard"
+                      ? "text-primaryColor"
+                      : "group-hover:text-primaryColor"
+                  } `}
+                >
+                  Dashboard
+                </p>
+                <div className="border-b border-b-primaryColor w-10 group-hover:w-20 transition-all duration-300" />
+              </div>
+            </Link>
+          ) : (
+            <Link href="/login" className="hover:text-primaryColor">
+              <div className="group flex items-center gap-3">
+                <p
+                  className={`text-base ${
+                    pathname == "/login"
+                      ? "text-primaryColor"
+                      : "group-hover:text-primaryColor"
+                  } `}
+                >
+                  Sign in
+                </p>
+                <div className="border-b border-b-primaryColor w-10 group-hover:w-20 transition-all duration-300" />
+              </div>
+            </Link>
+          )}
         </div>
       </div>
 

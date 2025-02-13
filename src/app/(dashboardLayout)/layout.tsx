@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { DashboardMenus } from "@/components/sidebars/DashboardMenus";
 import { MdMenuOpen } from "react-icons/md";
 
 interface IDashboardLayoutProps {
@@ -21,40 +21,7 @@ const DashboardLayout: React.FC<IDashboardLayoutProps> = ({ children }) => {
           ✖
         </label>
 
-        <ul className="p-6 space-y-4 mt-10">
-          <li>
-            <Link
-              href="/dashboard"
-              className="block p-2 hover:bg-card hover:text-primaryColor rounded"
-            >
-              Dashboard
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/dashboard/blogs"
-              className="block p-2 hover:bg-card hover:text-primaryColor rounded"
-            >
-              Blog Management
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/dashboard/projects"
-              className="block p-2 hover:bg-card hover:text-primaryColor rounded"
-            >
-              Project Management
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/dashboard/messages"
-              className="block p-2 hover:bg-card hover:text-primaryColor rounded"
-            >
-              Messages Management
-            </Link>
-          </li>
-        </ul>
+        <DashboardMenus />
       </div>
 
       {/* Main Content */}
