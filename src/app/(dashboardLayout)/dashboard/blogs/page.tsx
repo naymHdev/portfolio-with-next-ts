@@ -4,10 +4,11 @@ import { fetchData } from "@/utils/fetchData";
 import Link from "next/link";
 
 const BlogsPage = async () => {
-  const blogs: TBlog[] | null = await fetchData("/api/blog");
-
-  
-
+  const blogs: TBlog[] | null = await fetchData("/api/blog", {
+    next: {
+      revalidate: 30,
+    },
+  });
 
   if (blogs && blogs.length === 0) {
     return (
