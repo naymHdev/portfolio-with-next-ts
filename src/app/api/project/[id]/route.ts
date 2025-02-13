@@ -24,3 +24,39 @@ export const GET = async (
     );
   }
 };
+
+export const DELETE = async (
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) => {
+  await connectDB();
+
+  try {
+    const id = (await params).id;
+    const deletedProject = await ProjectModel.findByIdAndDelete(id);
+
+    if (!deletedProject) {
+      return NextResponse.json(
+        { message: "Project not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Project deleted successfully",
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Error deleting project",
+        errors: error,
+      },
+      { status: 500 }
+    );
+  }
+};

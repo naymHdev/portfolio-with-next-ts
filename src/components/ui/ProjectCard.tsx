@@ -1,8 +1,25 @@
+"use client";
+
 import { TProject } from "@/lib/models/Project.model.";
 import Image from "next/image";
 import NHReactMarkdown from "./ReactMarkdown";
+import { fetchData } from "@/utils/fetchData";
+import toast from "react-hot-toast";
 
 const ProjectCard = ({ project }: { project: TProject }) => {
+  const handleDelete = async (id: string | undefined) => {
+    const response = await fetchData(`/api/project/${id}`, {
+      method: "DELETE",
+    });
+    if (response) {
+      toast.success("Project deleted successfully");
+      // console.log("Blog deleted successfully", response);
+    } else {
+      // console.error("Failed to delete blog", response);
+      toast.error("Failed to delete project");
+    }
+  };
+
   return (
     <>
       <section className="">
@@ -26,7 +43,10 @@ const ProjectCard = ({ project }: { project: TProject }) => {
           <button className="custom-bg hover:scale-105 transition-transform px-5 py-2 text-title">
             Update
           </button>
-          <button className="custom-bg hover:scale-105 hover:text-white transition-transform px-5 py-2 text-title hover:bg-red-500 hover:border-none">
+          <button
+            onClick={() => handleDelete(project?._id)}
+            className="custom-bg hover:scale-105 hover:text-white transition-transform px-5 py-2 text-title hover:bg-red-500 hover:border-none"
+          >
             Delete
           </button>
         </div>
