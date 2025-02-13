@@ -81,7 +81,7 @@ export const PUT = async (
       {
         success: true,
         message: "Blog updated successfully",
-        project: updatedBlog,
+        blog: updatedBlog,
       },
       { status: 200 }
     );
@@ -89,7 +89,7 @@ export const PUT = async (
     return NextResponse.json(
       {
         success: false,
-        message: "Error updating project",
+        message: "Error updating blog",
         errors: error,
       },
       { status: 500 }

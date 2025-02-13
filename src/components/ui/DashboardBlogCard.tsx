@@ -6,6 +6,7 @@ import { TBlog } from "@/lib/models/blogModel";
 import NHReactMarkdown from "./ReactMarkdown";
 import { fetchData } from "@/utils/fetchData";
 import toast from "react-hot-toast";
+import BlogUpdateModal from "./BlogUpdateModal";
 
 const DashboardBlogCard = ({ blog }: { blog: TBlog }) => {
   const { title, content, image, date, _id } = blog || {};
@@ -38,9 +39,7 @@ const DashboardBlogCard = ({ blog }: { blog: TBlog }) => {
               <NHReactMarkdown content={content?.slice(0, 500)} />
             </div>
             <div className=" flex items-center gap-4 mt-4">
-              <button className="custom-bg hover:scale-105 transition-transform px-5 py-2 text-title">
-                Update
-              </button>
+              <BlogUpdateModal blog={blog} />
               <button
                 onClick={() => handleDelete(_id)}
                 className="custom-bg hover:scale-105 transition-transform px-5 py-2 text-title hover:bg-red-500 hover:border-none"
