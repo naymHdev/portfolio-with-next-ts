@@ -5,8 +5,8 @@ export const fetchData = async <T>(
   options: RequestInit = {}
 ): Promise<T | null> => {
   try {
-    const API_URL = "http://localhost:3000";
-    // const API_URL = "https://naym-hossen.vercel.app";
+    // const API_URL = "http://localhost:3000";
+    const API_URL = "https://naym-hossen.vercel.app";
 
     const response = await fetch(`${API_URL}${endpoint}`, {
       cache: "no-store",
