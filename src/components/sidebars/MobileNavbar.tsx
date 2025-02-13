@@ -2,6 +2,7 @@
 
 import { GiSkills } from "react-icons/gi";
 import { FaBlog, FaBusinessTime, FaFolder, FaUserCircle } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
 import { usePathname } from "next/navigation";
 
 // Navigation routes with icons and names
@@ -31,6 +32,11 @@ export const navRoutes = [
     name: "Blogs",
     route: "/blogs",
   },
+  {
+    icon: <MdDashboard />,
+    name: "Dashboard",
+    route: "/dashboard",
+  },
 ];
 
 const MobileNavbar = () => {
@@ -39,7 +45,7 @@ const MobileNavbar = () => {
   return (
     <>
       <footer className="fixed bottom-0 w-full bg-card py-3 z-50">
-        <nav className="flex justify-center space-x-8">
+        <nav className="flex justify-center space-x-6">
           {navRoutes.map((navItem, index) => (
             <a
               key={index}

@@ -21,7 +21,7 @@ const SignInPage = () => {
                 <button
                   onClick={() =>
                     signIn("google", {
-                      callbackUrl: "http://localhost:3000/dashboard",
+                      callbackUrl: "https://naym-hossen.vercel.app/dashboard",
                     })
                   }
                   className=" flex items-center gap-3 rounded-lg px-12 py-2 font-semibold custom-bg text-title hover:scale-110 hover:transition-all"
@@ -32,7 +32,7 @@ const SignInPage = () => {
                 <button
                   onClick={() =>
                     signIn("github", {
-                      callbackUrl: "http://localhost:3000/dshboard",
+                      callbackUrl: "https://naym-hossen.vercel.app/dshboard",
                     })
                   }
                   className=" flex items-center gap-3 rounded-lg px-12 py-2 font-semibold custom-bg text-title hover:scale-110 hover:transition-all"
