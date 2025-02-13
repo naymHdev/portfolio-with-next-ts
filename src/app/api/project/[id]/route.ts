@@ -60,3 +60,47 @@ export const DELETE = async (
     );
   }
 };
+
+export const PUT = async (
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) => {
+  await connectDB();
+
+  try {
+    const id = (await params).id;
+
+    const updatedData = await req.json();
+
+    const updatedProject = await ProjectModel.findByIdAndUpdate(
+      id,
+      updatedData,
+      { new: true }
+    );
+
+    if (!updatedProject) {
+      return NextResponse.json(
+        { message: "Project not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Project updated successfully",
+        project: updatedProject,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Error updating project",
+        errors: error,
+      },
+      { status: 500 }
+    );
+  }
+};

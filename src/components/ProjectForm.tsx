@@ -56,8 +56,6 @@ const ProjectForm = () => {
     }
   };
 
-  
-
   return (
     <>
       <div>

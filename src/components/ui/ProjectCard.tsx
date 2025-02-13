@@ -5,6 +5,7 @@ import Image from "next/image";
 import NHReactMarkdown from "./ReactMarkdown";
 import { fetchData } from "@/utils/fetchData";
 import toast from "react-hot-toast";
+import ProjectUpdateModal from "./ProjectUpdateModal";
 
 const ProjectCard = ({ project }: { project: TProject }) => {
   const handleDelete = async (id: string | undefined) => {
@@ -40,9 +41,10 @@ const ProjectCard = ({ project }: { project: TProject }) => {
           <NHReactMarkdown content={project?.details?.slice(0, 100)} />
         </div>
         <div className="flex items-center gap-4 mt-4">
-          <button className="custom-bg hover:scale-105 transition-transform px-5 py-2 text-title">
+          {/* <button className="custom-bg hover:scale-105 transition-transform px-5 py-2 text-title">
             Update
-          </button>
+          </button> */}
+          <ProjectUpdateModal project={project} />
           <button
             onClick={() => handleDelete(project?._id)}
             className="custom-bg hover:scale-105 hover:text-white transition-transform px-5 py-2 text-title hover:bg-red-500 hover:border-none"
