@@ -1,10 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import moment from "moment";
 import { TBlog } from "@/lib/models/blogModel";
 import NHReactMarkdown from "./ReactMarkdown";
+import { fetchData } from "@/utils/fetchData";
+import toast from "react-hot-toast";
 
 const DashboardBlogCard = ({ blog }: { blog: TBlog }) => {
   const { title, content, image, date, _id } = blog || {};
+
+  const handleDelete = async (id: string | undefined) => {
+    const response = await fetchData(`/api/blog/${id}`, { method: "DELETE" });
+    if (response) {
+      toast.success("Blog deleted successfully");
+      // console.log("Blog deleted successfully", response);
+    } else {
+      // console.error("Failed to delete blog", response);
+      toast.error("Failed to delete blog");
+    }
+  };
 
   return (
     <>
@@ -26,7 +41,10 @@ const DashboardBlogCard = ({ blog }: { blog: TBlog }) => {
               <button className="custom-bg hover:scale-105 transition-transform px-5 py-2 text-title">
                 Update
               </button>
-              <button className="custom-bg hover:scale-105 transition-transform px-5 py-2 text-title hover:bg-red-500 hover:border-none">
+              <button
+                onClick={() => handleDelete(_id)}
+                className="custom-bg hover:scale-105 transition-transform px-5 py-2 text-title hover:bg-red-500 hover:border-none"
+              >
                 Delete
               </button>
             </div>

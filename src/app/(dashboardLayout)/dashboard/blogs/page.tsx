@@ -6,6 +6,9 @@ import Link from "next/link";
 const BlogsPage = async () => {
   const blogs: TBlog[] | null = await fetchData("/api/blog");
 
+  
+
+
   if (blogs && blogs.length === 0) {
     return (
       <p className="text-sm font-medium text-secondary text-center mt-20">

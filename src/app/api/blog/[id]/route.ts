@@ -24,3 +24,36 @@ export const GET = async (
     );
   }
 };
+
+export const DELETE = async (
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) => {
+  await connectDB();
+
+  try {
+    const id = (await params).id;
+    const deletedBlog = await BlogModel.findByIdAndDelete(id);
+
+    if (!deletedBlog) {
+      return NextResponse.json({ message: "Blog not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Blog deleted successfully",
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Error deleting blog",
+        errors: error,
+      },
+      { status: 500 }
+    );
+  }
+};
