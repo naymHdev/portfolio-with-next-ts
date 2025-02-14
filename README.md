@@ -69,5 +69,5 @@ This project is open-source and available under the [MIT License](LICENSE).
 🔗 **Connect with Me:**  
 💻 [Portfolio](https://naym-hossen.vercel.app/)  
 🐙 [GitHub](https://github.com/naymHdev/)  
-📧 [Email](mailto:your-email@example.com)
+📧 [Email](naymhossen09@gmail.com)
 
