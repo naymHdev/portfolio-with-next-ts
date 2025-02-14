@@ -27,7 +27,7 @@ const DashboardBlogCard = ({ blog }: { blog: TBlog }) => {
       <section>
         <div className="p-4 flex flex-col md:flex-row justify-between border-b border-[#013f5b] gap-4">
           <div className="flex-1">
-            <a href={_id} target="_blank" rel="noopener noreferrer">
+            <a>
               <h2 className="text-2xl font-ubuntu font-semibold text-title hover:text-primaryColor">
                 {title}
               </h2>
