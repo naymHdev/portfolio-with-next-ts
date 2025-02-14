@@ -1,5 +1,11 @@
 import RouteTitle from "../../../components/ui/RouteTitle";
 import { GoDash } from "react-icons/go";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Experience | Naym Hossen",
+  description: "A showcase of my professional experience and projects.",
+};
 
 const experience = [
   {

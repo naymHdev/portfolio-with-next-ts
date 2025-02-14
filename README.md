@@ -1,37 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Website
 
-## Getting Started
+![Portfolio Screenshot](/public/images/naym-portfolio-landing-page.png)
 
-First, run the development server:
+## 🚀 Project Overview
+This is a modern, full-stack portfolio website built with Next.js 15, TypeScript, and the latest web technologies. It showcases projects, skills, and experiences in a visually appealing and user-friendly manner.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🔗 Live Demo
+[Live Website](https://naym-hossen.vercel.app/)
+
+## 📂 Repository
+[GitHub Repo](https://github.com/naymHdev/portfolio-with-next-ts)
+
+## 🛠️ Tech Stack
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript
+- **Database:** MongoDB with Mongoose
+- **Styling:** Tailwind CSS & DaisyUI
+- **Rendering Strategies:** SSR, SSG, CSR
+- **Authentication:** NextAuth.js (if implemented)
+- **Markdown Support:** react-markdown, rehype-highlight, remark-gfm
+
+## 📌 Features
+- Fully responsive and modern UI/UX
+- Dynamic portfolio projects & blogs
+- Dark mode support
+- SEO optimized
+- Fast performance with ISR & SSG
+- Contact form integration
+
+## 🚀 Installation & Setup
+
+### 1️⃣ Clone the Repository
+```sh
+git clone https://github.com/naymHdev/portfolio-with-next-ts.git
+cd portfolio-with-next-ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ Install Dependencies
+```sh
+yarn install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3️⃣ Set Up Environment Variables
+Create a `.env.local` file and add necessary environment variables:
+```env
+MONGODB_URI=your_mongodb_connection_string
+NEXT_PUBLIC_SITE_URL=https://naym-hossen.vercel.app/
+# Add other required variables
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4️⃣ Run the Development Server
+```sh
+yarn dev
+```
+The project will run at `http://localhost:3000`
 
-## Learn More
+## 📦 Deployment
+Deployed on [Vercel](https://vercel.com/) for seamless integration with Next.js.
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Contribution
+Feel free to fork the repo, create a new branch, and submit a pull request.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📜 License
+This project is open-source and available under the [MIT License](LICENSE).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+🔗 **Connect with Me:**  
+💻 [Portfolio](https://naym-hossen.vercel.app/)  
+🐙 [GitHub](https://github.com/naymHdev/)  
+📧 [Email](mailto:your-email@example.com)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# portfolio-with-next-ts

@@ -2,8 +2,15 @@ import NHReactMarkdown from "@/components/ui/ReactMarkdown";
 import RouteTitle from "@/components/ui/RouteTitle";
 import { TProject } from "@/lib/models/Project.model.";
 import { fetchData } from "@/utils/fetchData";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Projects | Naym Hossen",
+  description:
+    "Explore my latest projects, showcasing my skills in full-stack development, Next.js, and modern web technologies.",
+};
 
 const Projects = async () => {
   const projects: TProject[] | null = await fetchData("/api/project");

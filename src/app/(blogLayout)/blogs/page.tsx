@@ -5,6 +5,13 @@ import { fetchData } from "@/utils/fetchData";
 import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog - CWN",
+  description:
+    "Explore insightful articles on web development, programming, and technology trends.",
+};
 
 const BlogsPage = async () => {
   const blogs: TBlog[] | null = await fetchData("/api/blog");

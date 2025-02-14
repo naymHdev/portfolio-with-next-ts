@@ -2,6 +2,12 @@ import TicTacToe from "@/components/games/TicTacToe";
 import GithubStats from "@/components/GitHubStats";
 import MobileDeviceAbout from "@/components/MobileDeviceAbout";
 import ProfileImage from "@/components/ProfileImage";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Me - Naym Hossen",
+  description: "Learn more about me, my journey, and my skills.",
+};
 
 const AboutUs = () => {
   return (
