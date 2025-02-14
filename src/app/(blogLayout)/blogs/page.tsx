@@ -40,7 +40,7 @@ const BlogsPage = async () => {
                     alt={blog.title}
                     width={144}
                     height={96}
-                    className="w-full sm:w-[144px] sm:h-[96px] rounded object-cover"
+                    className="w-full  rounded object-cover"
                     style={{ objectFit: "cover" }}
                   />
                 </div>
