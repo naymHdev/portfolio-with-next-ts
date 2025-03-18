@@ -8,7 +8,7 @@ const Sidebar = () => {
     <>
       <section className="container mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="flex flex-col justify-evenly gap-8 h-screen pb-4 sm:pb-6 lg:pb-14">
+        <div className="flex flex-col justify-between min-h-screen pb-4 sm:pb-6 lg:pb-14">
           {/* Name with Designations */}
           <div className="">
             <Link href="/">

@@ -10,7 +10,7 @@ const CommonLayout: React.FC<CommonLayoutProps> = async ({ children }) => {
 
   return (
     <div className=" grid grid-cols-1 md:grid-cols-5">
-      <div className="col-span-full lg:col-span-2 lg:h-screen">
+      <div className="col-span-full lg:col-span-2">
         <div className="hidden md:flex py-4 sm:py-6 lg:py-8">
           <Sidebar />
         </div>
