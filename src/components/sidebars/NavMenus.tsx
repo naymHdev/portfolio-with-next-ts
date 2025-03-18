@@ -4,12 +4,10 @@ import Link from "next/link";
 import { FaFacebook, FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
 import GetInTouch from "../GetInTouch";
-import { UserProps } from "@/types/global.types";
 
-const NavMenus = ({ session }: { session: UserProps | null }) => {
+const NavMenus = () => {
   const pathname = usePathname();
 
-  // console.log("session", session?.user);
 
   return (
     <>
@@ -18,11 +16,10 @@ const NavMenus = ({ session }: { session: UserProps | null }) => {
           <Link href="/about" className="hover:text-primaryColor">
             <div className="group flex items-center gap-3">
               <p
-                className={`text-base ${
-                  pathname == "/about"
-                    ? "text-primaryColor"
-                    : "group-hover:text-primaryColor"
-                } `}
+                className={`text-base ${pathname == "/about"
+                  ? "text-primaryColor"
+                  : "group-hover:text-primaryColor"
+                  } `}
               >
                 About
               </p>
@@ -32,11 +29,10 @@ const NavMenus = ({ session }: { session: UserProps | null }) => {
           <Link href="/experience" className="hover:text-primaryColor">
             <div className="group flex items-center gap-3">
               <p
-                className={`text-base ${
-                  pathname == "/experience"
-                    ? "text-primaryColor"
-                    : "group-hover:text-primaryColor"
-                } `}
+                className={`text-base ${pathname == "/experience"
+                  ? "text-primaryColor"
+                  : "group-hover:text-primaryColor"
+                  } `}
               >
                 Experience
               </p>
@@ -46,11 +42,10 @@ const NavMenus = ({ session }: { session: UserProps | null }) => {
           <Link href="/projects" className="hover:text-primaryColor group">
             <div className="group flex items-center gap-3">
               <p
-                className={`text-base ${
-                  pathname == "/projects"
-                    ? "text-primaryColor"
-                    : "group-hover:text-primaryColor"
-                } `}
+                className={`text-base ${pathname == "/projects"
+                  ? "text-primaryColor"
+                  : "group-hover:text-primaryColor"
+                  } `}
               >
                 Projects
               </p>
@@ -60,11 +55,10 @@ const NavMenus = ({ session }: { session: UserProps | null }) => {
           <Link href="/skills" className="hover:text-primaryColor">
             <div className="group flex items-center gap-3">
               <p
-                className={`text-base ${
-                  pathname == "/skills"
-                    ? "text-primaryColor"
-                    : "group-hover:text-primaryColor"
-                } `}
+                className={`text-base ${pathname == "/skills"
+                  ? "text-primaryColor"
+                  : "group-hover:text-primaryColor"
+                  } `}
               >
                 Skills
               </p>
@@ -74,48 +68,16 @@ const NavMenus = ({ session }: { session: UserProps | null }) => {
           <Link href="/blogs" className="hover:text-primaryColor">
             <div className="group flex items-center gap-3">
               <p
-                className={`text-base ${
-                  pathname == "/blogs"
-                    ? "text-primaryColor"
-                    : "group-hover:text-primaryColor"
-                } `}
+                className={`text-base ${pathname == "/blogs"
+                  ? "text-primaryColor"
+                  : "group-hover:text-primaryColor"
+                  } `}
               >
                 Blogs
               </p>
               <div className="border-b border-b-primaryColor w-10 group-hover:w-20 transition-all duration-300" />
             </div>
           </Link>
-          {session?.user ? (
-            <Link href="/dashboard" className="hover:text-primaryColor">
-              <div className="group flex items-center gap-3">
-                <p
-                  className={`text-base ${
-                    pathname == "/dashboard"
-                      ? "text-primaryColor"
-                      : "group-hover:text-primaryColor"
-                  } `}
-                >
-                  Dashboard
-                </p>
-                <div className="border-b border-b-primaryColor w-10 group-hover:w-20 transition-all duration-300" />
-              </div>
-            </Link>
-          ) : (
-            <Link href="/login" className="hover:text-primaryColor">
-              <div className="group flex items-center gap-3">
-                <p
-                  className={`text-base ${
-                    pathname == "/login"
-                      ? "text-primaryColor"
-                      : "group-hover:text-primaryColor"
-                  } `}
-                >
-                  Sign in
-                </p>
-                <div className="border-b border-b-primaryColor w-10 group-hover:w-20 transition-all duration-300" />
-              </div>
-            </Link>
-          )}
         </div>
       </div>
 

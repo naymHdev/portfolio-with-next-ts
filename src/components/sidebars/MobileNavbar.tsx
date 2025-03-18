@@ -32,11 +32,6 @@ export const navRoutes = [
     name: "Blogs",
     route: "/blogs",
   },
-  {
-    icon: <MdDashboard />,
-    name: "Dashboard",
-    route: "/dashboard",
-  },
 ];
 
 const MobileNavbar = () => {
@@ -50,11 +45,10 @@ const MobileNavbar = () => {
             <a
               key={index}
               href={navItem.route}
-              className={`group flex flex-col items-center text-xl ${
-                pathname === navItem.route
-                  ? "text-primaryColor"
-                  : "text-title group-hover:text-primaryColor"
-              }`}
+              className={`group flex flex-col items-center text-xl ${pathname === navItem.route
+                ? "text-primaryColor"
+                : "text-title group-hover:text-primaryColor"
+                }`}
             >
               <span className="hover:animate-bounce hover:duration-300 hover:transition-all">
                 {navItem.icon}

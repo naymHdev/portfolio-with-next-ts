@@ -8,9 +8,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog - CWN",
+  title: "Naym Hossen | Blogs",
   description:
-    "Explore insightful articles on web development, programming, and technology trends.",
+    "Discover expert insights on web development, programming, and the latest technology trends. Stay updated with in-depth articles and tutorials.",
 };
 
 const BlogsPage = async () => {
