@@ -12,16 +12,16 @@ const DashboardPage = async () => {
         <Image
           className=" rounded-full"
           src={imageSrc}
-          alt="User Profile"
+          alt="Admin Profile"
           width={150}
           height={150}
         />
       </div>
       <h2 className=" text-lg font-black text-title mt-2">
-        {session?.user?.name}
+        {session?.user?.name || "Mr. Admin"}
       </h2>
       <p className=" font-medium text-foreground link">
-        {session?.user?.email}
+        {session?.user?.email || "admin1234@gmail.com"}
       </p>
     </div>
   );
