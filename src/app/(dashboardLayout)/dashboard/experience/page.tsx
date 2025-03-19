@@ -12,13 +12,7 @@ const ExpereienceManagePage = async () => {
         },
     });
 
-    if (experience && experience.length === 0) {
-        return (
-            <p className="text-sm font-medium text-secondary text-center mt-20">
-                No experience <span className="mx-1">•</span> found.
-            </p>
-        );
-    }
+
 
     return (
         <>
@@ -28,7 +22,9 @@ const ExpereienceManagePage = async () => {
             </div>
             <div className=" mt-5">
                 {
-                    experience && experience?.map((exp) => <ExperienceCard key={exp._id} experience={exp} />)
+                    experience && experience?.length > 0 ? experience?.map((exp) => <ExperienceCard key={exp._id} experience={exp} />) : <p className="text-sm font-medium text-primaryColor text-center mt-20">
+                        No experience <span className="mx-1">•</span> found.
+                    </p>
                 }
             </div>
         </>

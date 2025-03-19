@@ -40,7 +40,7 @@ const ExperienceCard = ({ experience }: { experience: IExperience }) => {
                 <h3 className="text-xl font-bold">{experience.title}</h3>
                 <p className="text-blue-400 font-semibold">{experience.company}</p>
                 <p className="text-gray-400">
-                    {moment(experience.startDate).format("MMM Do YY")} - {moment(experience.endDate).format("MMM Do YY")}
+                    {moment(experience.startDate).format("MMM YY")} - {moment(experience.endDate).format("MMM YY")}
                 </p>
                 <p className="mt-2 text-gray-300">{experience.description}</p>
 
@@ -66,11 +66,6 @@ const ExperienceCard = ({ experience }: { experience: IExperience }) => {
                     </div>
                 )}
                 <div className=" mt-5 flex justify-end items-center gap-4">
-                    <button
-                        className="custom-bg hover:scale-105 transition-transform px-5 py-2 text-title"
-                    >
-                        Update
-                    </button>
                     <button
                         onClick={() => handleDelete(experience._id)}
                         className="custom-bg hover:scale-105 transition-transform px-6 py-2 text-title hover:bg-red-500 hover:border-none"
