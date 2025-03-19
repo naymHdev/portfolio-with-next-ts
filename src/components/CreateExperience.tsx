@@ -2,9 +2,11 @@
 
 import { experienceSchema } from "@/types/experience";
 import { FC, useState } from "react";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { fetchData } from "@/utils/fetchData";
+import toast from "react-hot-toast";
 
 type ExperienceFormValues = z.infer<typeof experienceSchema>;
 
@@ -41,8 +43,26 @@ const CreateExperienceForm: FC = () => {
     const technologies = watch("technologies");
     const projects = watch("projects");
 
-    const onSubmit = (data: ExperienceFormValues) => {
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         console.log("Submitted Data:", data);
+
+        try {
+            const response = await fetchData<ExperienceFormValues>("/api/experience", {
+                method: "POST",
+                body: JSON.stringify(data),
+            });
+            console.log("Project created:", response);
+
+            if (!response) throw new Error("Invalid response from server");
+
+
+            // reset();
+            toast.success("Cretaed Experience Successfully!");
+        } catch (error: any) {
+            console.error("Experience created faild", error);
+            toast.error("Sorry, please try again!");
+        }
+
     };
 
     return (
