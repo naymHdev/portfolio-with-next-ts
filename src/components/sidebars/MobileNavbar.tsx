@@ -2,7 +2,6 @@
 
 import { GiSkills } from "react-icons/gi";
 import { FaBlog, FaBusinessTime, FaFolder, FaUserCircle } from "react-icons/fa";
-import { MdDashboard } from "react-icons/md";
 import { usePathname } from "next/navigation";
 
 // Navigation routes with icons and names

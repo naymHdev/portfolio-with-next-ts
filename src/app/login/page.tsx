@@ -14,7 +14,6 @@ const SignInPage = () => {
               </h2>
               <LoginForm />
             </div>
-            <div className="border opacity-10 my-10 border-primaryColor" />
           </div>
         </div>
       </div>
