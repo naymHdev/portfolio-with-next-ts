@@ -1,35 +1,24 @@
 import RouteTitle from "../../../components/ui/RouteTitle";
 import { GoDash } from "react-icons/go";
 import { Metadata } from "next";
+import { IExperience } from "@/lib/models/experience.model";
+import { fetchData } from "@/utils/fetchData";
+import moment from "moment"
 
 export const metadata: Metadata = {
   title: "Experience | Naym Hossen",
   description: "A showcase of my professional experience and projects.",
 };
 
-const experience = [
-  {
-    companyName: "Logistic Business Solutions Ltd.",
-    jobTitle: "Full Stack Developer",
-    experienceDetails:
-      "Logistic Business Solutions Ltd. is an EdTech startup based in Bangladesh. As a Full Stack Developer, I contribute to developing projects alongside a team of two developers. My role includes hands-on coding and collaborative development.",
-    joiningDate: "May, 2024",
-    quitDate: "August, 2024",
-    technologyUsed: [
-      "JavaScript",
-      "React JS",
-      "Tailwind CSS",
-      "CSS",
-      "React Query",
-      "Axios",
-      "Node Js",
-      "MongoDB",
-    ],
-    projectsName: ["Ruchiralap"],
-  },
-];
 
-const Experience = () => {
+const Experience = async () => {
+
+  const experience: IExperience[] | null = await fetchData("/api/experience", {
+    next: {
+      revalidate: 30,
+    },
+  });
+
   return (
     <>
       <RouteTitle firstP="My Work" secondP="Experience" />
@@ -41,21 +30,21 @@ const Experience = () => {
               <section className="col-span-full md:col-span-2">
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold text-title mb-2 md:mb-4">
-                    {itm?.jobTitle}
+                    {itm?.title}
                   </h3>
 
                   <a
                     href="#"
                     className="font-semibold text-md sm:text-lg text-primaryColor"
                   >
-                    {itm?.companyName}
+                    {itm?.company}
                   </a>
                 </div>
                 {/* Joining and Quit Dates */}
                 <div className="mt-4 md:mt-6 text-foreground font-medium text-base sm:text-lg flex items-center gap-1 flex-wrap">
-                  <p>{itm?.joiningDate}</p>
+                  <p>{moment(itm?.startDate).format("MMM YY")}</p>
                   <GoDash className="text-foreground text-lg" />
-                  <p>{itm?.quitDate}</p>
+                  <p>{moment(itm?.endDate).format("MMM YY")}</p>
                 </div>
               </section>
 
@@ -63,7 +52,7 @@ const Experience = () => {
               <section className="col-span-full md:col-span-4">
                 <div>
                   <p className="font-medium text-base sm:text-lg text-foreground">
-                    {itm?.experienceDetails}
+                    {itm?.description}
                   </p>
 
                   {/* Technology Used Section */}
@@ -71,7 +60,7 @@ const Experience = () => {
                     Technology Used
                   </h3>
                   <div className="flex flex-wrap gap-2 mt-2">
-                    {itm?.technologyUsed?.map((tech, index) => (
+                    {itm?.technologies?.map((tech, index) => (
                       <div key={index}>
                         <button className="px-3 py-1 text-sm font-medium bg-card text-primaryColor custom-bg">
                           {tech}
@@ -85,7 +74,7 @@ const Experience = () => {
                     Projects
                   </h3>
                   <div className="flex flex-wrap gap-2 mt-2">
-                    {itm?.projectsName?.map((project, index) => (
+                    {itm?.projects?.map((project, index) => (
                       <div key={index}>
                         <h2 className="font-bold text-md sm:text-lg text-title">
                           {project}
