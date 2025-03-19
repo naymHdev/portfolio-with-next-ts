@@ -25,6 +25,7 @@ const CreateExperienceForm: FC = () => {
         handleSubmit,
         setValue,
         watch,
+        reset,
         formState: { errors },
     } = useForm<ExperienceFormValues>({
         resolver: zodResolver(experienceSchema),
@@ -44,22 +45,23 @@ const CreateExperienceForm: FC = () => {
     const projects = watch("projects");
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-        console.log("Submitted Data:", data);
+        // console.log("Submitted Data:", data);
 
         try {
             const response = await fetchData<ExperienceFormValues>("/api/experience", {
                 method: "POST",
                 body: JSON.stringify(data),
             });
-            console.log("Project created:", response);
+            // console.log("Project created:", response);
 
             if (!response) throw new Error("Invalid response from server");
 
 
-            // reset();
+            reset();
             toast.success("Cretaed Experience Successfully!");
         } catch (error: any) {
-            console.error("Experience created faild", error);
+            // console.error("Experience created faild", error);
+            return new Error(error);
             toast.error("Sorry, please try again!");
         }
 
