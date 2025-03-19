@@ -58,6 +58,14 @@ export const DashboardMenus = ({ session }: { session: UserProps | null }) => {
             Messages Management
           </Link>
         </li>
+        <li>
+          <Link
+            href="/dashboard/experience"
+            className="block p-2 hover:bg-card hover:text-primaryColor rounded"
+          >
+            Experience Management
+          </Link>
+        </li>
 
         {
           session?.user?.email ? (<li onClick={() => signOut()}>

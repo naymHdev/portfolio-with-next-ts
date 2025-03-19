@@ -18,7 +18,7 @@ const AboutUs = () => {
       </div>
       <div className=" grid grid-cols-1 md:grid-cols-7 gap-4 mt-16 md:mt-10">
         <div className="col-span-full md:col-span-4">
-          <p className="text-lg font-medium text-foreground">
+          <p className="text-md md:text-lg font-medium text-foreground">
             Web development isn’t just my profession—it’s my passion. From the first lines of code to the final deployment, I thrive on crafting digital experiences that are fast, intuitive, and visually compelling. With JavaScript at the core of my expertise, I build seamless, interactive applications using modern frameworks like React.js and Next.js. I embrace the power of Jamstack architecture to create high-performance, scalable, and secure websites that push the boundaries of what’s possible.
             <br />
             <br />
