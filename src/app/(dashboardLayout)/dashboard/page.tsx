@@ -1,10 +1,15 @@
 import { authOptions } from "@/utils/authOptions";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 const DashboardPage = async () => {
   const session = await getServerSession(authOptions);
   const imageSrc = session?.user?.image ?? "/default-avatar.png";
+
+  if (!session) {
+    redirect("/login");
+  }
 
   return (
     <div className=" md:[w-70%] mx-auto">
