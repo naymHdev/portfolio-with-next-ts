@@ -19,7 +19,6 @@ const LoginForm = () => {
 
             const formData = new FormData(e.currentTarget);
             const result = await docredentialLogin(formData);
-
             // console.log('result auth', result);
 
             if (result?.error) {
@@ -37,7 +36,7 @@ const LoginForm = () => {
     };
 
     return (
-        <div className="max-w-md mx-auto p-6  rounded-lg">
+        <div className="max-w-md mx-auto mt-5">
             {error && <p className="text-red-500 text-sm text-center mb-2">{error}</p>}
             <form onSubmit={handleSubmit} className="space-y-4">
                 <input
@@ -45,7 +44,7 @@ const LoginForm = () => {
                     name="email"
                     id='email'
                     placeholder="Email"
-                    className="w-full px-3 py-2 border custom-bg rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border-none rounded-lg focus:outline-none bg-transparent custom-bg"
                     required
                 />
                 <input
@@ -53,12 +52,12 @@ const LoginForm = () => {
                     name="password"
                     id='password'
                     placeholder="Password"
-                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border-none rounded-lg focus:outline-none bg-transparent custom-bg"
                     required
                 />
                 <button
                     type="submit"
-                    className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+                    className="rounded-lg px-12 py-2 font-semibold custom-bg text-title hover:scale-110 hover:transition-all"
                     disabled={loading}
                 >
                     {loading ? 'Logging in...' : 'Login'}
