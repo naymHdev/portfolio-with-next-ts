@@ -3,9 +3,8 @@ const Footer = () => {
   return (
     <>
       <section>
-        <p className="mt-16 font-medium md:font-bold text-foreground text-sm text-center italic">
-          Built with Next JS 14, Tailwind, Node Js and Framer Motion by Naym
-          Hossen ©{Year}
+        <p className="mt-16 text-sm font-medium italic text-center text-foreground md:text-base">
+          Built with Next.js 15.1 — Full-Stack Portfolio by Naym Hossen ©{Year}
         </p>
       </section>
     </>
