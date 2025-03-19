@@ -113,7 +113,7 @@ const GetInTouch = () => {
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="w-full bg-inherit focus:outline-none border-title border-b p-2 text-foreground"
+                  className="w-full bg-inherit focus:outline-none border-primaryColor border-b p-2 text-foreground"
                   required
                   {...register("name")}
                 />
@@ -123,7 +123,7 @@ const GetInTouch = () => {
                 <input
                   type="text"
                   placeholder="Your Email"
-                  className="w-full bg-inherit focus:outline-none border-title border-b p-2 text-foreground"
+                  className="w-full bg-inherit focus:outline-none border-primaryColor border-b p-2 text-foreground"
                   required
                   {...register("email")}
                 />
@@ -132,7 +132,7 @@ const GetInTouch = () => {
               <div className="form-control mt-8">
                 <textarea
                   placeholder="Your Message"
-                  className="w-full bg-inherit focus:outline-none border-title border-b p-2 text-foreground"
+                  className="w-full bg-inherit focus:outline-none border-primaryColor border-b p-2 text-foreground"
                   required
                   {...register("message")}
                 ></textarea>

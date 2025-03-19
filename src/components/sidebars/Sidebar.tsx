@@ -1,6 +1,7 @@
 import Link from "next/link";
 import NavMenus from "./NavMenus";
-import { FaFacebook, FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
+import { BiLogoGmail } from "react-icons/bi";
 import GetInTouch from "../GetInTouch";
 
 const Sidebar = () => {
@@ -42,7 +43,7 @@ const Sidebar = () => {
           <section className="flex items-center justify-between">
             <div className="flex items-center space-x-6">
               <a
-                className="hover:-mt-10 transition-all duration-300"
+                className="hover:-mt-1 transition-all duration-300"
                 href="https://github.com/naymHdev"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -50,7 +51,7 @@ const Sidebar = () => {
                 <FaGithub className="text-2xl" />
               </a>
               <a
-                className="hover:-mt-10 transition-all duration-300"
+                className="hover:-mt-1 transition-all duration-300"
                 href="https://www.linkedin.com/in/naymhdev"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -58,15 +59,16 @@ const Sidebar = () => {
                 <FaLinkedin className="text-2xl text-[#31b6f4]" />
               </a>
               <a
-                className="hover:-mt-10 transition-all duration-300"
-                href="https://web.facebook.com/naymHdev"
+                className="transition-all duration-300 hover:-mt-1"
+                href="mailto:naymhossen09@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaFacebook className="text-2xl text-[#3572f5]" />
+                <BiLogoGmail className="text-2xl text-red-500" />
               </a>
+
               <a
-                className="hover:-mt-10 transition-all duration-300"
+                className="hover:-mt-1 transition-all duration-300"
                 href="https://wa.me/8801770064053"
                 target="_blank"
                 rel="noopener noreferrer"

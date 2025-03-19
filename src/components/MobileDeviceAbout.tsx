@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { FaFacebook, FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
+import { BiLogoGmail } from "react-icons/bi";
 import GetInTouch from "./GetInTouch";
 
 const MobileDeviceAbout = () => {
@@ -49,12 +50,12 @@ const MobileDeviceAbout = () => {
               <FaLinkedin className="text-xl text-[#31b6f4]" />
             </a>
             <a
-              className="hover:-mt-10 transition-all duration-300"
-              href="https://web.facebook.com/naymHdev"
+              className="transition-all duration-300 hover:-mt-1"
+              href="mailto:naymhossen09@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaFacebook className="text-xl text-[#3572f5]" />
+              <BiLogoGmail className="text-2xl text-red-500" />
             </a>
             <a
               className="hover:-mt-10 transition-all duration-300"

@@ -18,17 +18,13 @@ const AboutUs = () => {
       </div>
       <div className=" grid grid-cols-1 md:grid-cols-7 gap-4 mt-16 md:mt-10">
         <div className="col-span-full md:col-span-4">
-          <p className=" text-foreground text-lg font-medium">
-            My journey in web development is driven by a diverse range of
-            advanced tools and languages, with JavaScript at the core of my
-            expertise. I proficiently utilize frameworks like React.js and
-            Next.js to create seamless and user-centric websites. Leveraging the
-            power of the Jamstack architecture, I develop fast, secure, and
-            dynamic web experiences. My design skills ensure each project is not
-            only functional but also aesthetically pleasing. Join me as I
-            continue to explore new technologies and innovations to shape the
-            future of web development.
+          <p className="text-lg font-medium text-foreground">
+            Web development isn’t just my profession—it’s my passion. From the first lines of code to the final deployment, I thrive on crafting digital experiences that are fast, intuitive, and visually compelling. With JavaScript at the core of my expertise, I build seamless, interactive applications using modern frameworks like React.js and Next.js. I embrace the power of Jamstack architecture to create high-performance, scalable, and secure websites that push the boundaries of what’s possible.
+            <br />
+            <br />
+            Beyond code, I see development as an art—where design meets functionality, and innovation drives progress. Every project is an opportunity to learn, refine, and create something meaningful. As technology evolves, I remain committed to exploring new tools and techniques that shape the future of the web.
           </p>
+
         </div>
         <div className="col-span-full md:col-span-3">
           <div className="text-start">
