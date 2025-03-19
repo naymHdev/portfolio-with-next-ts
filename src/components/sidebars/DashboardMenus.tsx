@@ -14,6 +14,7 @@ export const DashboardMenus = () => {
     { name: "Project Management", path: "/dashboard/projects" },
     { name: "Messages Management", path: "/dashboard/messages" },
     { name: "Experience Management", path: "/dashboard/experience" },
+    { name: "Skills Management", path: "/dashboard/skills" },
   ];
 
   return (

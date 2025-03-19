@@ -16,7 +16,7 @@ const CreateExperienceForm: FC = () => {
     const [projectInput, setProjectInput] = useState("");
 
     const openModal = () => {
-        const modal = document.getElementById("my_modal_5") as HTMLDialogElement | null;
+        const modal = document.getElementById("experience_modal") as HTMLDialogElement | null;
         modal?.showModal();
     };
 
@@ -73,7 +73,7 @@ const CreateExperienceForm: FC = () => {
                 <button onClick={openModal} className=" custom-bg px-4 py-2 text-white hover:scale-110 duration-300 transition-transform">
                     Create Experience
                 </button>
-                <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                <dialog id="experience_modal" className="modal modal-bottom sm:modal-middle">
                     <div className="modal-box bg-card">
 
                         <section>
