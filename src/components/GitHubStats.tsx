@@ -52,7 +52,7 @@ const GithubStats = () => {
           >
             <img
               className="w-full h-auto"
-              src="https://github-readme-stats.vercel.app/api/pin/?username=naymHdev&repo=Learn-Python&theme=transparent&hide_border=true&title_color=22ACF5&text_color=9FBBD0&icon_color=FEFE5B&text_bold=false&description_lines_count=2"
+              src="https://github-readme-stats.vercel.app/api/pin/?username=naymHdev&repo=PunarBay&theme=transparent&hide_border=true&title_color=22ACF5&text_color=9FBBD0&icon_color=FEFE5B&text_bold=false&description_lines_count=2"
               alt="Naym Hossen"
               loading="lazy"
             />

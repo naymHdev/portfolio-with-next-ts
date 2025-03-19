@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 export const createBlog = async (data: FormData) => {
   const blogData = Object.fromEntries(data.entries());
 
-  const res = await fetch("https://naym-hossen.vercel.app/api/blog", {
+  const res = await fetch("http://localhost:3000/api/blog", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
