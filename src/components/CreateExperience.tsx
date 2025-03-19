@@ -56,7 +56,7 @@ const CreateExperienceForm: FC = () => {
 
                         <section>
 
-                            <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4 bg-gray-800 rounded-lg text-white">
+                            <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4  rounded-lg text-white">
                                 <h2 className="text-xl font-bold">Add Experience</h2>
 
                                 <div>
