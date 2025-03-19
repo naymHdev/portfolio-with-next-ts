@@ -1,11 +1,16 @@
 import { DashboardMenus } from "@/components/sidebars/DashboardMenus";
+import { authOptions } from "@/utils/authOptions";
+import { getServerSession } from "next-auth";
 import { MdMenuOpen } from "react-icons/md";
 
 interface IDashboardLayoutProps {
   children: React.ReactNode;
 }
 
-const DashboardLayout: React.FC<IDashboardLayoutProps> = ({ children }) => {
+const DashboardLayout: React.FC<IDashboardLayoutProps> = async ({ children }) => {
+
+  const session = await getServerSession(authOptions);
+
   return (
     <div className="min-h-screen flex font-inter bg-background">
       {/* Sidebar Drawer */}
@@ -21,7 +26,7 @@ const DashboardLayout: React.FC<IDashboardLayoutProps> = ({ children }) => {
           ✖
         </label>
 
-        <DashboardMenus />
+        <DashboardMenus session={session} />
       </div>
 
       {/* Main Content */}

@@ -3,6 +3,7 @@
 import { FcGoogle } from "react-icons/fc";
 import { FaSquareGithub } from "react-icons/fa6";
 import { signIn } from "next-auth/react";
+import LoginForm from "@/components/login";
 
 const SignInPage = () => {
   return (
@@ -14,9 +15,12 @@ const SignInPage = () => {
               <h2 className=" text-4xl font-semibold text-primary-text">
                 Create account
               </h2>
+              <LoginForm />
               <p className=" text-primary-text font-medium mt-8">
                 Create account with your Social account
               </p>
+
+              {/* Social Logins */}
               <div className=" flex items-center justify-center gap-6 mt-6">
                 <button
                   onClick={() =>

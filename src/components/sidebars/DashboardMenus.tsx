@@ -1,9 +1,20 @@
 "use client";
 
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
-export const DashboardMenus = () => {
+
+type UserProps = {
+  user?: {
+    email?: string | null | undefined;
+  };
+};
+
+
+export const DashboardMenus = ({ session }: { session: UserProps | null }) => {
+
+  // console.log('session', session?.user?.email);
+
   return (
     <>
       <ul className="p-6 space-y-2 mt-14">
@@ -47,14 +58,25 @@ export const DashboardMenus = () => {
             Messages Management
           </Link>
         </li>
-        <li onClick={() => signOut()}>
-          <Link
-            href=""
-            className="block p-2 hover:bg-card text-primaryColor rounded"
-          >
-            Sign Out
-          </Link>
-        </li>
+
+        {
+          session?.user?.email ? (<li onClick={() => signOut()}>
+            <Link
+              href=""
+              className="block p-2 hover:bg-card text-primaryColor rounded"
+            >
+              Sign Out
+            </Link>
+          </li>) : (<li>
+            <Link
+              href="/login"
+              className="block p-2 hover:bg-card text-primaryColor rounded"
+            >
+              Sign In
+            </Link>
+          </li>)
+        }
+
       </ul>
     </>
   );
