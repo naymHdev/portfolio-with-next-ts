@@ -1,12 +1,37 @@
 "use client"
 
 import { IExperience } from "@/lib/models/experience.model"
+import { fetchData } from "@/utils/fetchData"
 import moment from "moment"
+import toast from "react-hot-toast"
 
 
 const ExperienceCard = ({ experience }: { experience: IExperience }) => {
 
-    // console.log(experience);
+
+    const handleDelete = async (id: string | undefined) => {
+        if (!id) {
+            toast.error("Invalid experience ID");
+            return;
+        }
+
+        try {
+            const response = await fetchData(`/api/experience/${id}`, {
+                method: "DELETE",
+            });
+
+            if (!response) {
+                throw new Error("No response from the server");
+            }
+
+            // console.log("Experience deleted successfully", response);
+            toast.success("Experience deleted successfully");
+        } catch (error) {
+            console.error("Failed to delete experience:", error);
+            toast.error("Failed to delete experience");
+        }
+    };
+
 
 
     return (
@@ -40,6 +65,19 @@ const ExperienceCard = ({ experience }: { experience: IExperience }) => {
                         </ul>
                     </div>
                 )}
+                <div className=" mt-5 flex justify-end items-center gap-4">
+                    <button
+                        className="custom-bg hover:scale-105 transition-transform px-5 py-2 text-title"
+                    >
+                        Update
+                    </button>
+                    <button
+                        onClick={() => handleDelete(experience._id)}
+                        className="custom-bg hover:scale-105 transition-transform px-6 py-2 text-title hover:bg-red-500 hover:border-none"
+                    >
+                        Delete
+                    </button>
+                </div>
             </div>
         </>
     )

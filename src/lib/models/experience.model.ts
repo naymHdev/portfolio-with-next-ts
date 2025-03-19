@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose from "mongoose";
 
 export interface IExperience {
     _id?: string;
@@ -12,7 +12,7 @@ export interface IExperience {
     projects: string[];
 }
 
-const ExperienceSchema: Schema = new Schema({
+const ExperienceSchema = new mongoose.Schema<IExperience>({
     title: { type: String, required: true },
     company: { type: String, required: true },
     companyUrl: { type: String },

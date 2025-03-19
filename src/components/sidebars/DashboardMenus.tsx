@@ -4,14 +4,14 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 
-type UserProps = {
-  user?: {
-    email?: string | null | undefined;
-  };
-};
+// type UserProps = {
+//   user?: {
+//     email?: string | null | undefined;
+//   };
+// };
 
 
-export const DashboardMenus = ({ session }: { session: UserProps | null }) => {
+export const DashboardMenus = () => {
 
   // console.log('session', session?.user?.email);
 
@@ -67,7 +67,7 @@ export const DashboardMenus = ({ session }: { session: UserProps | null }) => {
           </Link>
         </li>
 
-        {
+        {/* {
           session?.user?.email ? (<li onClick={() => signOut()}>
             <Link
               href=""
@@ -83,7 +83,7 @@ export const DashboardMenus = ({ session }: { session: UserProps | null }) => {
               Sign In
             </Link>
           </li>)
-        }
+        } */}
 
       </ul>
     </>
