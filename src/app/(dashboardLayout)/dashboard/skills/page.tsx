@@ -1,11 +1,17 @@
 import SkillList from "@/components/skills/SkillList"
 import UploadSkill from "@/components/skills/UploadSkill"
+import { ISkill } from "@/types/skill";
+import { fetchData } from "@/utils/fetchData";
 
 
+interface IManageSkillsPageProps {
+    skills: ISkill[] | null;
+}
 
+const ManageSkillsPage = async () => {
 
-const ManageSkillsPage = () => {
-
+    const data: IManageSkillsPageProps | null = await fetchData("/api/skills");
+    const skills: ISkill[] = data?.skills ?? [];
 
     return (
         <>
@@ -14,7 +20,7 @@ const ManageSkillsPage = () => {
                 <UploadSkill />
             </div>
             <div className='flex flex-wrap gap-4'>
-                {/* <SkillList /> */}
+                <SkillList skills={skills} />
             </div>
         </>
     )

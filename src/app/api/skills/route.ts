@@ -8,12 +8,13 @@ export async function POST(req: Request) {
         await connectDB();
         const formData = await req.formData();
         const title = formData.get("title") as string;
+        const category = formData.get("category") as string;
         const imageFile = formData.get("image") as File;
 
         console.log('imageFile', formData);
 
-        if (!title || !imageFile) {
-            return NextResponse.json({ error: "Title and image are required" }, { status: 400 });
+        if (!title || !category || !imageFile) {
+            return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
         }
 
         // Convert file to buffer
@@ -28,13 +29,15 @@ export async function POST(req: Request) {
             }).end(buffer);
         });
 
-        const imageUrl = (uploadResult as any).secure_url;
-
         // Save to MongoDB
-        const newSkill = new Skill({ title, image: imageUrl });
-        await newSkill.save();
+        const newSkill = await Skill.create({
+            title,
+            category,
+            image: (uploadResult as any).secure_url,
+        });
 
-        return NextResponse.json({ message: "Skill uploaded successfully", skill: newSkill }, { status: 201 });
+        return NextResponse.json(newSkill, { status: 201 });
+
     } catch (error) {
         console.error("Error uploading skill:", error);
         return NextResponse.json({ error: "Internal server error" }, { status: 500 });

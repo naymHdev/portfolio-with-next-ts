@@ -4,15 +4,18 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
+const skillCategories = ["Frontend", "Backend", "DevOps", "Database", "UI/UX", "Cloud", "Other"];
+
 export default function UploadSkill() {
     const [title, setTitle] = useState("");
+    const [category, setCategory] = useState('');
     const [image, setImage] = useState<File | null>(null);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!title || !image) {
+        if (!title || !image || !category) {
             toast("Title and image are required");
             return;
         }
@@ -21,6 +24,7 @@ export default function UploadSkill() {
 
         const formData = new FormData();
         formData.append("title", title);
+        formData.append("category", category);
         formData.append("image", image);
 
         // console.log('formData', title, image);
@@ -53,6 +57,18 @@ export default function UploadSkill() {
                 onChange={(e) => setTitle(e.target.value)}
                 className="border p-2 w-full"
             />
+            {/* Skill Category Dropdown */}
+            <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="p-2 border rounded-md"
+            >
+                {skillCategories.map((cat) => (
+                    <option key={cat} value={cat}>
+                        {cat}
+                    </option>
+                ))}
+            </select>
             <input
                 type="file"
                 accept="image/*"
