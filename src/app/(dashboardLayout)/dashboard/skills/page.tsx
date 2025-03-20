@@ -4,7 +4,7 @@ import SkillCreateForm from '@/components/skills'
 
 const ManageSkillsPage = () => {
 
-    console.log(process.env.NEXT_PUBLIC_API_URL);
+    // console.log(process.env.NEXT_PUBLIC_API_URL);
 
     return (
         <>
