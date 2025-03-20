@@ -19,7 +19,7 @@ const ManageSkillsPage = async () => {
                 <p className=" text-lg font-bold text-primary-content">Management Core Skills</p>
                 <UploadSkill />
             </div>
-            <div className='flex flex-wrap gap-4'>
+            <div className=''>
                 <SkillList skills={skills} />
             </div>
         </>
