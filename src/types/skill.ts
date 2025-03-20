@@ -8,5 +8,7 @@ export interface ISkill {
 
 export const skillsSchema = z.object({
     title: z.string().min(3, "Title must be at least 3 characters"),
-    image: z.string(),
+    image: z.string().url("Invalid image URL").optional(),
 });
+
+export type SkillFormValues = z.infer<typeof skillsSchema>;
