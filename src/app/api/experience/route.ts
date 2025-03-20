@@ -29,9 +29,8 @@ export const GET = async () => {
 export const POST = async (request: Request) => {
     try {
         const experience = await request.json();
-        const createExperience = { ...experience };
 
-        const isExperience = await Experience.create(createExperience);
+        const isExperience = await Experience.create(experience);
 
         return NextResponse.json(
             {

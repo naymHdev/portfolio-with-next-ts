@@ -26,7 +26,7 @@ const Projects = async () => {
           {
             projects?.length === 0 ? <><p>Projects are not available!</p></> : <>
               {
-                projects?.map((project) => <div key={project._id}
+                projects?.slice().reverse().map((project) => <div key={project._id}
                   className="mt-5">
                   <div className="flex flex-col md:flex-row justify-between w-full gap-6">
                     <div className="flex-1">

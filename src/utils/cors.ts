@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export const cors = (req: NextRequest, res: NextResponse) => {
   const allowedOrigins = [
     "http://localhost:3000",
-    // "https://naym-hossen.vercel.app",
+    "https://naym-hossen.vercel.app",
   ];
   const origin = req.headers.get("origin");
 

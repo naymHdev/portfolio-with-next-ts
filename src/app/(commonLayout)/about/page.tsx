@@ -19,11 +19,12 @@ const AboutUs = () => {
       <div className=" grid grid-cols-1 md:grid-cols-7 gap-4 mt-16 md:mt-10">
         <div className="col-span-full md:col-span-4">
           <p className="text-md md:text-lg font-medium text-foreground">
-            Web development isn’t just my profession—it’s my passion. From the first lines of code to the final deployment, I thrive on crafting digital experiences that are fast, intuitive, and visually compelling. With JavaScript at the core of my expertise, I build seamless, interactive applications using modern frameworks like React.js and Next.js. I embrace the power of Jamstack architecture to create high-performance, scalable, and secure websites that push the boundaries of what’s possible.
+            As a Full-Stack Web Developer, I craft seamless digital experiences that blend performance, aesthetics, and functionality. With <span className=" text-primaryColor font-semibold">JavaScript</span> at the core, I build dynamic applications using React.js, Next.js, and the power of Jamstack for speed, scalability, and security.
             <br />
             <br />
-            Beyond code, I see development as an art—where design meets functionality, and innovation drives progress. Every project is an opportunity to learn, refine, and create something meaningful. As technology evolves, I remain committed to exploring new tools and techniques that shape the future of the web.
+            To me, coding is more than logic—it’s creativity in motion. Every project is an <span className=" text-primaryColor font-semibold">opportunity</span> to innovate, refine, and push the boundaries of what’s possible on the web.
           </p>
+
 
         </div>
         <div className="col-span-full md:col-span-3">

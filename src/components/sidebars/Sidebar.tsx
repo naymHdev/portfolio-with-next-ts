@@ -64,7 +64,7 @@ const Sidebar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <BiLogoGmail className="text-2xl text-red-500" />
+                <BiLogoGmail className="text-2xl text-[#31b6f4]" />
               </a>
 
               <a

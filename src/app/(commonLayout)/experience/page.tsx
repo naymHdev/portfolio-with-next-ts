@@ -14,6 +14,10 @@ export const metadata: Metadata = {
 const Experience = async () => {
 
   const experience: IExperience[] | null = await fetchData("/api/experience");
+  // console.log("experience", experience);
+
+
+
 
   return (
     <>
