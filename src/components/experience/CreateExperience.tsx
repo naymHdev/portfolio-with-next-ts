@@ -226,7 +226,7 @@ const CreateExperienceForm: FC = () => {
 
                         <div className="modal-action">
                             <form method="dialog">
-                                <button className="custom-bg bg-card px-4 py-2 text-white">Close</button>
+                                <button className="custom-bg bg-card px-4 py-2 text-white">Cancel</button>
                             </form>
                         </div>
                     </div>
