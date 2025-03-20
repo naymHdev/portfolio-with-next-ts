@@ -2,11 +2,7 @@ import { TMessage } from "@/lib/models/message.model";
 import { fetchData } from "@/utils/fetchData";
 
 const MessagesManagement = async () => {
-  const messages: TMessage[] | null = await fetchData("/api/message", {
-    next: {
-      revalidate: 30,
-    },
-  });
+  const messages: TMessage[] | null = await fetchData("/api/message");
 
   // console.log("messages", messages);
 

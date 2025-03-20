@@ -8,7 +8,6 @@ export const fetchData = async <T>(
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
     const response = await fetch(`${API_URL}${endpoint}`, {
-      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
         ...options.headers,
