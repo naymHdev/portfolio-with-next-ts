@@ -1,49 +1,50 @@
 "use client";
 
 import { useState } from "react";
-import { CldImage } from "next-cloudinary";
 import toast from "react-hot-toast";
 
-interface ImageUploaderProps {
-    onImageUpload: (url: string) => void;
-}
+type ImageUploaderProps = {
+    onImageUpload: (imageUrl: string) => void;
+};
 
-const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload }) => {
-    const [preview, setPreview] = useState<string | null>(null);
-    const [uploading, setUploading] = useState(false);
+const ImageUploader = ({ onImageUpload }: ImageUploaderProps) => {
+    const [image, setImage] = useState<File | null>(null);
 
-    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+
         if (!file) return;
 
-        const formData = new FormData();
-        formData.append("image", file);
+        // Set image to show preview (optional)
+        setImage(file);
 
-        setUploading(true);
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "your_upload_preset"); // Cloudinary upload preset
+        formData.append("cloud_name", process.env.CLOUDINARY_CLOUD_NAME as string); // Cloudinary cloud name
+
         try {
-            const res = await fetch("/api/upload", {
+            const res = await fetch("https://api.cloudinary.com/v1_1/dgrg4lmww/image/upload", {
                 method: "POST",
                 body: formData,
             });
-
-            if (!res.ok) throw new Error("Upload failed");
-
             const data = await res.json();
-            setPreview(data.url);
-            onImageUpload(data.url);
-            toast.success("Image uploaded successfully!");
+            if (res.ok) {
+                onImageUpload(data.secure_url); // Pass the image URL to the parent form
+                toast.success("Image uploaded successfully!");
+            } else {
+                toast.error(data.error?.message || "Image upload failed");
+            }
         } catch (error) {
-            toast.error("Image upload failed.");
-        } finally {
-            setUploading(false);
+            console.error("Error uploading image:", error);
+            toast.error("Image upload failed");
         }
     };
 
     return (
-        <div className="flex flex-col items-center space-y-2">
-            <input type="file" accept="image/*" onChange={handleFileChange} className="w-full p-2 border rounded" />
-            {uploading && <p className="text-gray-400">Uploading...</p>}
-            {preview && <CldImage src={preview} width="100" height="100" alt="Skill Icon" crop="fill" />}
+        <div>
+            <input type="file" accept="image/*" onChange={handleFileChange} />
+            {image && <img src={URL.createObjectURL(image)} alt="preview" width={100} />}
         </div>
     );
 };

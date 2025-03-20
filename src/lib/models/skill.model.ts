@@ -1,8 +1,8 @@
 import { ISkill } from "@/types/skill";
-import mongoose from "mongoose";
+import mongoose, { models, Schema } from "mongoose";
 
 
-const SkillSchema = new mongoose.Schema<ISkill>({
+const SkillSchema = new Schema<ISkill>({
     title: { type: String, required: true },
     image: { type: String, required: true },
 },
@@ -10,4 +10,4 @@ const SkillSchema = new mongoose.Schema<ISkill>({
         timestamps: true
     });
 
-export const Skill = mongoose.model<ISkill>("Experience", SkillSchema);
+export const Skill = models.Skill || mongoose.model<ISkill>("Skill", SkillSchema);
