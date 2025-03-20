@@ -3,6 +3,9 @@ import SkillCreateForm from '@/components/skills'
 
 
 const ManageSkillsPage = () => {
+
+    console.log(process.env.NEXT_PUBLIC_API_URL);
+
     return (
         <>
             <div className=" flex justify-between items-center">

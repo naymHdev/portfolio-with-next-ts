@@ -5,8 +5,7 @@ export const fetchData = async <T>(
   options: RequestInit = {}
 ): Promise<T | null> => {
   try {
-    const API_URL = "http://localhost:3000";
-    // const API_URL = process.env.NEXT_PUBLIC_API_URL ;
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
     const response = await fetch(`${API_URL}${endpoint}`, {
       cache: "no-store",

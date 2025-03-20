@@ -13,11 +13,7 @@ export const metadata: Metadata = {
 
 const Experience = async () => {
 
-  const experience: IExperience[] | null = await fetchData("/api/experience", {
-    next: {
-      revalidate: 30,
-    },
-  });
+  const experience: IExperience[] | null = await fetchData("/api/experience");
 
   return (
     <>
