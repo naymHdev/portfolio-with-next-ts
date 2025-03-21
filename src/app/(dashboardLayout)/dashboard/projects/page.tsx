@@ -4,7 +4,11 @@ import { fetchData } from "@/utils/fetchData";
 import Link from "next/link";
 
 const ProjectManagement = async () => {
-  const projects: TProject[] | null = await fetchData("/api/project");
+  const projects: TProject[] | null = await fetchData("/api/project", {
+    next: {
+      revalidate: 30,
+    },
+  });
 
   if (projects && projects.length === 0) {
     return (

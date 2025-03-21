@@ -1,15 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-const skillCategories = ["Frontend", "Backend", "DevOps", "Database", "UI/UX", "Cloud", "tools", "Other"];
+const skillCategories = ["Frontend", "Backend", "DevOps", "Database", "UI/UX", "Cloud", "Tools", "Other"];
 
-const openModal = () => {
-    const modal = document.getElementById("skill_modal") as HTMLDialogElement | null;
-    modal?.showModal();
-};
+
 
 export default function UploadSkill() {
 
@@ -18,11 +15,21 @@ export default function UploadSkill() {
     const [image, setImage] = useState<File | null>(null);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+    const modalRef = useRef<HTMLDialogElement | null>(null);
+
+    const openModal = () => {
+        const modal = document.getElementById("skill_modal") as HTMLDialogElement | null;
+        modal?.showModal();
+    };
+
+    const closeModal = () => {
+        modalRef.current?.close();
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!title || !image || !category) {
-            toast("Title and image are required");
+            toast.error("Title and image are required");
             return;
         }
 
@@ -43,12 +50,13 @@ export default function UploadSkill() {
 
             if (res) {
                 // console.log("Skill created successfully:", res);
-                toast("Skill uploaded successfully");
+                toast.success("Skill uploaded successfully");
                 router.refresh();
+                closeModal();
             }
         } catch (error) {
             console.error(error);
-            toast("Something went wrong");
+            toast.error("Something went wrong");
         } finally {
             setLoading(false);
         }
