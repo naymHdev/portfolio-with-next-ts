@@ -17,7 +17,7 @@ export const metadata = {
   author: "Naym Hossen",
   openGraph: {
     type: "website",
-    url: "https://naym-hossen.vercel.app",
+    url: "https://naymweb.vercel.app",
     title: "Naym Hossen - Full Stack Developer",
     description:
       "Discover projects and achievements of Naym Hossen, a passionate Full Stack developer.",

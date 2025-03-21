@@ -6,7 +6,7 @@
 This is a modern, full-stack portfolio website built with Next.js 15, TypeScript, and the latest web technologies. It showcases projects, skills, and experiences in a visually appealing and user-friendly manner.
 
 ## 🔗 Live Demo
-[Live Website](https://naym-hossen.vercel.app/)
+[Live Website](https://naymweb.vercel.app/)
 
 ## 📂 Repository
 [GitHub Repo](https://github.com/naymHdev/portfolio-with-next-ts)
@@ -45,7 +45,7 @@ yarn install
 Create a `.env.local` file and add necessary environment variables:
 ```env
 MONGODB_URI=your_mongodb_connection_string
-NEXT_PUBLIC_SITE_URL=https://naym-hossen.vercel.app/
+NEXT_PUBLIC_SITE_URL=https://naymweb.vercel.app/
 # Add other required variables
 ```
 
@@ -67,7 +67,7 @@ This project is open-source and available under the [MIT License](LICENSE).
 ---
 
 🔗 **Connect with Me:**  
-💻 [Portfolio](https://naym-hossen.vercel.app/)  
+💻 [Portfolio](https://naymweb.vercel.app/)  
 🐙 [GitHub](https://github.com/naymHdev/)  
 📧 [Email](naymhossen09@gmail.com)
 

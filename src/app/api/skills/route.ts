@@ -36,8 +36,9 @@ export async function POST(req: Request) {
 
         return NextResponse.json(newSkill, { status: 201 });
 
-    } catch (error) {
-        return NextResponse.json({ error }, { status: 500 });
+    } catch (error: any) {
+        console.error("Error in POST /api/skills:", error);
+        return NextResponse.json({ error: "Internal server error" }, { status: 500 });
     }
 }
 
@@ -47,7 +48,8 @@ export async function GET() {
         await connectDB();
         const skills = await Skill.find();
         return NextResponse.json({ skills });
-    } catch (error) {
+    } catch (error: any) {
+        console.error("Error in GET /api/skills:", error);
         return NextResponse.json({ error: "Internal server error" }, { status: 500 });
     }
 }
