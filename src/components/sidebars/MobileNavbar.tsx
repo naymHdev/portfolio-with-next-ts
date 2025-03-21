@@ -39,7 +39,7 @@ const MobileNavbar = () => {
   return (
     <>
       <footer className="fixed bottom-0 w-full bg-card py-3 z-50">
-        <nav className="flex justify-center space-x-6">
+        <nav className="flex justify-center space-x-7">
           {navRoutes.map((navItem, index) => (
             <a
               key={index}
