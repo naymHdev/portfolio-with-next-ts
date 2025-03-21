@@ -11,8 +11,6 @@ export async function POST(req: Request) {
         const category = formData.get("category") as string;
         const imageFile = formData.get("image") as File;
 
-        console.log('imageFile', formData);
-
         if (!title || !category || !imageFile) {
             return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
         }
@@ -39,7 +37,7 @@ export async function POST(req: Request) {
         return NextResponse.json(newSkill, { status: 201 });
 
     } catch (error) {
-        return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+        return NextResponse.json({ error }, { status: 500 });
     }
 }
 
@@ -50,7 +48,6 @@ export async function GET() {
         const skills = await Skill.find();
         return NextResponse.json({ skills });
     } catch (error) {
-        console.error("Error fetching skills:", error);
         return NextResponse.json({ error: "Internal server error" }, { status: 500 });
     }
 }

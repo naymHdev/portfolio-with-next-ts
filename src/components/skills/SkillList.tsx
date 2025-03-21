@@ -28,6 +28,7 @@ export default function SkillList({ skills }: { skills: ISkill[] | null }) {
             toast.success("Skill deleted successfully")
 
         } catch (error: any) {
+            console.log(error);
             toast.error("Failed to delete skill")
         }
     }
