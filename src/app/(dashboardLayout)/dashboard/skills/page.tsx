@@ -12,8 +12,8 @@ const ManageSkillsPage = async () => {
 
     const data: IManageSkillsPageProps | null = await fetchData("/api/skills", {
         next: {
-            revalidate: 30,
-        },
+            revalidate: 5
+        }
     });
     const skills: ISkill[] = data?.skills ?? [];
 

@@ -16,7 +16,11 @@ interface IManageSkillsPageProps {
 
 const Skills = async () => {
 
-  const data: IManageSkillsPageProps | null = await fetchData("/api/skills");
+  const data: IManageSkillsPageProps | null = await fetchData("/api/skills", {
+    next: {
+      revalidate: 10,
+    },
+  });
   const skills: ISkill[] = data?.skills ?? [];
 
   return (
