@@ -2,6 +2,8 @@ export interface IUser {
     id?: string;
     email: string;
     password: string;
+    image?: string;
+    name?: string;
 }
 
 const users: IUser[] = [

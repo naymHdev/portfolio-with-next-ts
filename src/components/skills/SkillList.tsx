@@ -12,7 +12,7 @@ export default function SkillList({ skills }: { skills: ISkill[] | null }) {
     const handleDelete = async (id: string | undefined) => {
 
         if (!id) {
-            console.log("Invalid skill ID")
+            toast.error("Invalid skill ID")
             return;
         }
 
@@ -28,7 +28,6 @@ export default function SkillList({ skills }: { skills: ISkill[] | null }) {
             toast.success("Skill deleted successfully")
 
         } catch (error: any) {
-            console.log(error.message)
             toast.error("Failed to delete skill")
         }
     }

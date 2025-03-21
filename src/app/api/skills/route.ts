@@ -39,7 +39,6 @@ export async function POST(req: Request) {
         return NextResponse.json(newSkill, { status: 201 });
 
     } catch (error) {
-        console.error("Error uploading skill:", error);
         return NextResponse.json({ error: "Internal server error" }, { status: 500 });
     }
 }
